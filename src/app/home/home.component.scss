@@ -51,12 +51,22 @@ app-home {
       width: 100%;
       height: 100vh;
       background-color: #002518;
-      margin: 0 40px;
     }
     .faq-container {
       width: 100%;
       min-height: 100vh;
       background-color: whitesmoke;
+      .container {
+        margin: 0 40px;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .tab {
+          position: relative;
+        }
+      }
     }
     .contact-container {
       width: 100%;
