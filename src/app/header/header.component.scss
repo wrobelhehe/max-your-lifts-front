@@ -1,0 +1,36 @@
+app-header {
+  .header-container {
+    background-color: #002518;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+
+    // padding: 0 20px;
+    height: 10vh;
+    .con {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      width: 80%;
+      height: 100%;
+      transition: 0.5s linear;
+
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: 70px;
+        }
+        h2 {
+          color: whitesmoke;
+        }
+      }
+    }
+  }
+}

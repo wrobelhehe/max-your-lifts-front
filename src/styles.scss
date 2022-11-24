@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #002518;
+}
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+@import "remixicon/fonts/remixicon.css";
+@import "../src/app/app.component.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+@import "../src/app/table/table.component.scss";
+@import "../src/app/home/home.component.scss";
+@import "../src/app/header/header.component.scss";
+@import "../src/app/side-nav/side-nav.component.scss";
+@import "../src/app/footer/footer.component.scss";
+@import "../src/app/mid-nav/mid-nav.component.scss";
+@import "../src/app/header-nav/header-nav.component.scss";
