@@ -2,7 +2,7 @@
 
 
 <div class="main-container">
-  <app-mid-nav class="mid-nav" *ngIf="scrolled===1" ></app-mid-nav>
+  <app-mid-nav [@inOutAnimation] [section]="section" [addIndicator]="addIndicator" class="mid-nav" *ngIf="scrolled===1" ></app-mid-nav>
 
   <div class="img-container">
   </div>

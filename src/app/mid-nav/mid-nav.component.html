@@ -1,29 +1,29 @@
 <div class="navigation">
     <ul class="nav-bar" >
-        <li class="nav-item " (click)="activeLink(1)" [ngClass]="{ active: tab === 'tab1' }">
+        <li class="nav-item " (click)="activeLink(1)" [ngClass]="{ active: section === 'home' }">
           <a href="#home" class="nav-a" >
             <span><i class="ri-home-4-line"></i></span></a
           >
         </li>
-        <li class="nav-item"(click)="activeLink(2)" [ngClass]="{ active: tab === 'tab2' }">
+        <li class="nav-item"(click)="activeLink(2)" [ngClass]="{ active: section === 'about' }">
           <a href="#about" class="nav-a" 
             ><span><i class="ri-information-line"></i></span></a
           >
         </li>
-        <li class="nav-item" (click)="activeLink(3)" [ngClass]="{ active: tab === 'tab3' }">
+        <li class="nav-item" (click)="activeLink(3)" [ngClass]="{ active: section === 'faq' }">
           <a href="#faq" class="nav-a"><span><i class="ri-question-line"></i></span></a>
         </li>
-        <li class="nav-item" (click)="activeLink(4)" [ngClass]="{ active: tab === 'tab4' }">
+        <li class="nav-item" (click)="activeLink(4)" [ngClass]="{ active: section === 'contact' }">
           <a href="#contact" class="nav-a" 
             ><span><i class="ri-contacts-line"></i></span></a
           >
         </li>
-        <li class="nav-item"(click)="activeLink(5)" [ngClass]="{ active: tab === 'tab5' }">
+        <li class="nav-item"(click)="activeLink(5)" [ngClass]="{ active: section === 'signup' }">
           <a href="#signup" class="nav-a"
             ><span><i class="ri-user-add-line"></i></span></a
           >
         </li>
-        <li class="nav-item" (click)="activeLink(6)" [ngClass]="{ active: tab === 'tab6' }">
+        <li class="nav-item" (click)="activeLink(6)" [ngClass]="{ active: section === 'login' }">
           <a href="#login" class="nav-a"
             ><span><i class="ri-login-circle-line"></i></span></a
           >

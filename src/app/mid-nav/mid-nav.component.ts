@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-mid-nav',
@@ -7,31 +7,26 @@ import { Component } from '@angular/core';
 })
 export class MidNavComponent {
 
-  tab: any;
-  tab1: any;
-  tab2: any;
-  tab3: any;
-  tab4: any;
-  tab5: any;
-  tab6: any;
+  @Input() section: any;
+  
 
-addIndicator: boolean = false
+  @Input() addIndicator:boolean = false
 
 
 activeLink (check: number) :void {
   this.addIndicator = true
   if (check == 1) {
-    this.tab = 'tab1';
+    this.section = 'home';
   } else if (check == 2) {
-    this.tab = 'tab2';
+    this.section = 'about';
   } else if (check == 3) {
-    this.tab = 'tab3';
+    this.section = 'faq';
   }else if (check == 4) {
-    this.tab = 'tab4';
+    this.section = 'contact';
   }else if (check == 5) {
-    this.tab = 'tab5';
+    this.section = 'signup';
   }else if (check == 6) {
-    this.tab = 'tab6';
+    this.section = 'login';
   }
 }
 

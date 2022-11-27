@@ -23,6 +23,7 @@ import { HeaderNavComponent } from './header-nav/header-nav.component';
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
+    BrowserAnimationsModule
     
   ],
   providers: [],
