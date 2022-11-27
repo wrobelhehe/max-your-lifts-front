@@ -1,5 +1,5 @@
 <div class="header-nav-container">
-  <div class="nav-container" [ngStyle]="{ left: changeStyles() }">
+  <div class="nav-container" [ngStyle]="{ top: changeStyles() }">
     <ul class="nav-bar">
       <li class="nav-item">
         <a href="#home" class="nav-a" (click)="afterClick()">
@@ -21,7 +21,7 @@
       </li>
       <li class="nav-item">
         <a href="#signup" class="nav-a" (click)="afterClick()"
-          ><span>Register</span></a
+          ><span>Sign up</span></a
         >
       </li>
       <li class="nav-item">
@@ -45,6 +45,5 @@
     (click)="toggleNavMenu()"
     id="nav-open"
   >
-    <i class="ri-apps-2-fill"></i>
-  </div>
+  <i class="ri-menu-4-line"></i>  </div>
 </div>

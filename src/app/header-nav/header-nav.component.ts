@@ -17,6 +17,6 @@ export class HeaderNavComponent {
   }
 
   changeStyles() {
-    return this.isNavMenuOpen ? '100%' : '0';
+    return this.isNavMenuOpen ? '-100%' : '14%';
   }
 }

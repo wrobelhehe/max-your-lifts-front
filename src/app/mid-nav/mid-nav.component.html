@@ -1,1 +1,33 @@
-<p>mid-nav works!</p>
+<div class="navigation">
+    <ul class="nav-bar" >
+        <li class="nav-item " (click)="activeLink(1)" [ngClass]="{ active: tab === 'tab1' }">
+          <a href="#home" class="nav-a" >
+            <span><i class="ri-home-4-line"></i></span></a
+          >
+        </li>
+        <li class="nav-item"(click)="activeLink(2)" [ngClass]="{ active: tab === 'tab2' }">
+          <a href="#about" class="nav-a" 
+            ><span><i class="ri-information-line"></i></span></a
+          >
+        </li>
+        <li class="nav-item" (click)="activeLink(3)" [ngClass]="{ active: tab === 'tab3' }">
+          <a href="#faq" class="nav-a"><span><i class="ri-question-line"></i></span></a>
+        </li>
+        <li class="nav-item" (click)="activeLink(4)" [ngClass]="{ active: tab === 'tab4' }">
+          <a href="#contact" class="nav-a" 
+            ><span><i class="ri-contacts-line"></i></span></a
+          >
+        </li>
+        <li class="nav-item"(click)="activeLink(5)" [ngClass]="{ active: tab === 'tab5' }">
+          <a href="#signup" class="nav-a"
+            ><span><i class="ri-user-add-line"></i></span></a
+          >
+        </li>
+        <li class="nav-item" (click)="activeLink(6)" [ngClass]="{ active: tab === 'tab6' }">
+          <a href="#login" class="nav-a"
+            ><span><i class="ri-login-circle-line"></i></span></a
+          >
+        </li>
+        <div *ngIf="addIndicator" class="indicator" ></div>
+      </ul>
+</div>

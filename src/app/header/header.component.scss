@@ -2,13 +2,13 @@ app-header {
   .header-container {
     background-color: #002518;
     width: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
+    
     display: flex;
     justify-content: center;
-
-    // padding: 0 20px;
+    align-items: center;
+    -webkit-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+    -moz-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+    box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
     height: 10vh;
     .con {
       display: flex;
@@ -23,14 +23,50 @@ app-header {
         display: flex;
         justify-content: center;
         align-items: center;
-
-        img {
-          height: 70px;
-        }
+        a{
         h2 {
-          color: whitesmoke;
+          color: #f5f8ff;
+          transition: all 0.3s;
         }
+      }
       }
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 767.98px) {
+ .header-container {
+  height: 15vh;
+  .con {
+    height: 15vh;
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a{
+      h2 {
+        font-size: 2rem;
+
+      }
+    }
+    }
+  }
+ }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+  
+  
+}
+
