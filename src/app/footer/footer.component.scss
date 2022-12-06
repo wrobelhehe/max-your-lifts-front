@@ -3,7 +3,7 @@ app-footer {
     padding: 20px 0;
     height: 15vh;
     width: 100%;
-    background-color: #002518;
+    background-color: #004d40;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -14,6 +14,7 @@ app-footer {
       
       width: 80%;
       height: 100%;
+      
       
 .menu-section{
   width: 100%;
@@ -31,16 +32,19 @@ app-footer {
         justify-content: space-between;
         flex-direction: row;
         align-items: center;
-
-        a {
+        text-align: center;
+        .nav-a {
           height: 100%;
           color: #f5f8ff;
           padding: 10px;
           font-weight: 500;
           transition: all 0.3s;
           font-size: 1rem;
+          cursor: pointer;
           span {
             height: 100%;
+            
+
           }
         
         }
@@ -54,6 +58,7 @@ app-footer {
       .title {
         justify-content: center;
         align-items: center;
+        text-align: center;
         a {
           font-weight: bolder;
           font-size: 2em;
@@ -92,4 +97,27 @@ app-footer {
     }
   }
 
+}
+
+
+@media (max-width: 767.98px) {
+  .footer-container {
+    .footer-section {
+      .menu-section {
+      .nav-bar {
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+
+        .nav-item {
+          padding-bottom: 15px;
+        }
+      }
+        .title {
+          display: none;
+        }
+      }
+    }
+  }
 }

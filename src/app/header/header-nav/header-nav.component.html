@@ -1,5 +1,5 @@
 <div class="header-nav-container">
-  <div class="nav-container" [ngStyle]="{ top: changeStyles() }">
+  <div class="nav-container" [ngStyle]="{ inset: changeStyles() }">
     <ul class="nav-bar">
       <li class="nav-item">
         <a href="#home" class="nav-a" (click)="afterClick()">
@@ -20,13 +20,13 @@
         >
       </li>
       <li class="nav-item">
-        <a href="#signup" class="nav-a" (click)="afterClick()"
-          ><span>Sign up</span></a
+        <div  class="nav-a" (click)="afterClick();signUp()"
+          ><span>Sign up</span></div
         >
       </li>
       <li class="nav-item">
-        <a href="#login" class="nav-a" (click)="afterClick()"
-          ><span>Login</span></a
+        <div  class="nav-a"  (click)="afterClick();login()"
+          ><span>Login</span></div
         >
       </li>
     </ul>

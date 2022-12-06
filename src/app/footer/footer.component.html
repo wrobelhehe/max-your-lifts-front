@@ -2,7 +2,7 @@
     <div class="footer-section">
     <div class="menu-section">
         <ul class="nav-bar">
-            <li class="nav-item">
+            <li class="nav-item first">
               <a href="#home" class="nav-a" >
                 <span>Home</span></a
               >
@@ -21,20 +21,20 @@
           <ul class="nav-bar title">
             <li class="nav-item"><a class="nav-a" href="/"><span>Max Your Lifts</span></a></li>
           </ul>
-          <ul class="nav-bar">
+          <ul class="nav-bar second">
             <li class="nav-item">
                 <a href="#contact" class="nav-a" 
                   ><span>Contact</span></a
                 >
               </li>
               <li class="nav-item">
-                <a href="#signup" class="nav-a" 
-                  ><span>Sign up</span></a
+                <div class="nav-a" (click)="signUp()"
+                  ><span>Sign up</span></div
                 >
               </li>
               <li class="nav-item">
-                <a href="#login" class="nav-a" 
-                  ><span>Login</span></a
+                <div  class="nav-a" (click)="login()"
+                  ><span>Login</span></div
                 >
               </li>
           </ul>

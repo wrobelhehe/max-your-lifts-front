@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+import { SignupComponent } from '../signup/signup.component';
+
 
 @Component({
   selector: 'app-footer',
@@ -7,4 +11,20 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+
+  constructor(private dialog: MatDialog) {
+
+  }
+  signUp() {
+    const dialogConfig = new MatDialogConfig()
+    dialogConfig.width = '650px';
+    this.dialog.open(SignupComponent,dialogConfig)
+   }
+
+
+   login() : void {
+    const dialogConfig = new MatDialogConfig()
+    dialogConfig.width = "650px";
+    this.dialog.open(LoginComponent, dialogConfig)
+  }
 }

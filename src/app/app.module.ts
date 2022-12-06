@@ -2,28 +2,52 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { TableComponent } from './table/table.component';
+
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
-import { FooterComponent } from './footer/footer.component';
-import { MidNavComponent } from './mid-nav/mid-nav.component';
-import { HeaderNavComponent } from './header-nav/header-nav.component';
+
+import { MaxYourLiftsModule } from './max-your-lifts/max-your-lifts.module';
+import {NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION} from "ngx-ui-loader"
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
+
+
+const ngxUiLoaderConfig : NgxUiLoaderConfig  = {
+  text: 'Loading...',
+  
+  textColor: '#f5f8ff',
+  textPosition: 'center-center',
+  
+  gap: 100,
+  pbColor: '#004d40',
+  bgsColor: "#f5f8ff",
+  bgsSize: 100,
+  fgsColor: '#f5f8ff',
+  fgsType: SPINNER.ballSpinClockwise,
+  fgsSize: 150,
+  pbDirection: PB_DIRECTION.leftToRight,
+  pbThickness: 5,
+  
+}
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TableComponent, HeaderComponent, SideNavComponent, FooterComponent, MidNavComponent, HeaderNavComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     MaterialModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaxYourLiftsModule,
+    HttpClientModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    MatSnackBarModule,
+    
+    
     
   ],
   providers: [],

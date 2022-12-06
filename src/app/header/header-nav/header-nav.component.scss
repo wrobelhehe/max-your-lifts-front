@@ -12,19 +12,20 @@ app-header-nav {
         align-items: center;
 
         .nav-item {
-          a {
+          .nav-a {
             height: 100%;
             color: #f5f8ff;
             padding: 10px;
             font-weight: 500;
             transition: all 0.3s;
             font-size: 1.5rem;
+            cursor: pointer;
             span {
               height: 100%;
             }
           
           }
-          a:hover {
+          .nav-a:hover {
             background-color: #f5f8ff;
             border-radius: 5px;
             color: black;
@@ -77,16 +78,15 @@ app-header-nav {
   }
 
   .nav-container {
+    
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
     display: flex;
     flex-direction: column;
     height: 50vh;
+    width: 100vw;
     align-items: center;
-    transition: 0.3s;
-    background-color: rgba(0, 37, 24, 98%);
+    transition: all 0.3s;
+    background-color: rgba(0, 77, 64, 98%);
     padding: 20px 0;
     -webkit-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
     -moz-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
@@ -101,8 +101,8 @@ app-header-nav {
       padding-bottom: 40px;
       .nav-item {
         width: 100%;
-        padding: 10px;
-        a {
+        padding: 10px 0px;
+        .nav-a {
           font-size: 2rem;
         }
       }
@@ -118,7 +118,7 @@ app-header-nav {
       
       .nav-item {
         
-        a {
+        .nav-a {
           font-size: 1rem;
         }
       }

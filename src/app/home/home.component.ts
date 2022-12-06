@@ -1,5 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { SignupComponent } from '../signup/signup.component';
 
 
 @Component({
@@ -30,49 +34,57 @@ import { Component, HostListener } from '@angular/core';
   ],
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   section: string = "";
 
-  addIndicator: boolean = false
+
 
   scrolled = 0;
+
+  
 
   @HostListener('window:scroll')
   onWindowScroll() {
     const numb = window.scrollY;
-    if (numb >= 50){
+    if (numb >= 160){
     
-      this.addIndicator=true
-
       this.scrolled = 1;
-      console.log(numb)
-
-      if (numb <550) {
-        this.section ="home"
-      }else if(numb>=550 && numb < 1650) {
-        this.section = 'about'
-        this.addIndicator=true
-
-
-      } else if(numb>=1650 && numb < 2650){
-        this.section ='faq'
-
-      } else if(numb>=2650 && numb < 2970) {
-        this.section ='contact'
-
-      } else {
-        this.scrolled = 0;
-
-      }
-      
+  
     }
     else {
       this.scrolled = 0;
-      this.section=''
-      this.addIndicator=true
+      
     }
   }
   
-  
+  constructor(private dialog: MatDialog,
+    private router: Router,
+    private userService: UserService) {
+
+
+
+  }
+
+  ngOnInit(): void {
+    if(localStorage.getItem('token') != null) {
+      this.userService.checkToken().subscribe((res: any) => {
+        this.router.navigate(['/max-your-lifts/dashboard'])
+      }, (error: any)=> {
+        console.log(error)
+      })
+    }
+  }
+  signUp() {
+    console.log(window.innerWidth)
+    const dialogConfig = new MatDialogConfig()
+    if(window.innerWidth>=768){
+    dialogConfig.width = '650px';
+    
+  } else {
+    dialogConfig.width = '100vw';
+    dialogConfig.height = '100vh'
+  }
+    this.dialog.open(SignupComponent,dialogConfig)
+   }
 }

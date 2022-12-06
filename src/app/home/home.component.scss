@@ -8,10 +8,12 @@ app-home {
     justify-content: center;
     align-items: center;
     
+    
     .mid-nav {
       position: fixed;
-      top: 92vh;
-      left: 10vw;
+      top: 85vh;
+      left: 3%;
+      
     }
   
         .img-container {
@@ -22,14 +24,7 @@ app-home {
           top: 2%;
           right: 0%;
             
-          background-image: url(../../assets/img/img8.png);
-          background-repeat: no-repeat;
-          background-position: center;;
-          background-size: 1500px;
-          
-          
-    
-        
+       
         
         }
  
@@ -40,9 +35,17 @@ app-home {
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
+
+      background-image: url(../../assets/img/img8.png);
+      background-repeat: no-repeat;
+      background-position-x: 1500%;
+      background-position-y: 60%;
+      background-size: 1500px;
      
-  
-      
+      -webkit-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+      -moz-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+      box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+     
 
       .info-wrap {
         display: flex;
@@ -57,17 +60,21 @@ app-home {
        justify-content: space-between;
           align-items: flex-start;
           flex-direction: column;
+         padding: 0 10px;
+
+         
           h1 {
-            font-size: 9rem;
+            font-size: 8rem;
           }
           h2 {
             font-size: 2rem;
             font-weight: 300;
           }
           .buttons-container {
-            padding-top: 100px;
+            padding-top: 20vh;
+            padding-left: 10vw;
             .sign-button {
-              background: #002518;
+              background: #004d40;
               color: #f5f8ff;
               font-size: 2rem;
               padding: 35px 45px
@@ -81,9 +88,21 @@ app-home {
     
     .about-container {
       width: 100%;
-      height: 100vh;
-      background-color: #002518;
+      background-color: #004d40;
+display: flex;
+      justify-content: center;
+      align-items: center;
+     
       .about-con {
+        height: 100vh;
+
+        width: 80%;
+       
+      -webkit-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+      -moz-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+      box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+      
+     
         h1 {
           color: #f5f8ff;
         }
@@ -109,13 +128,17 @@ app-home {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+
+      -webkit-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+    -moz-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+    box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
       .section-faq {
         width: 100%;
          min-height: 100vh;       
       background-image: url(../../assets/img/smallqa2.png);
         background-repeat: no-repeat;
         background-position: bottom 20% left 0;
-  
+        padding: 0 10px;
         h1 {
           color: black;
           font-size: 5em;
@@ -134,6 +157,7 @@ app-home {
         
 
         .tab {
+          width: 100%;
           position: relative;
           background-color:white ;
           padding: 0 20px 20px;
@@ -145,22 +169,24 @@ app-home {
           label {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
             cursor: pointer;
             h2 {
               width: 40px;
               height: 40px;
-              background: linear-gradient(135deg, #002518, #0b9766);              display: flex;
+              background: linear-gradient(135deg, #004d40, #0b9766);              display: flex;
               justify-content: center;
               align-items: center;
               color: #fff;
               font-size: 1.25em;
               border-radius: 5px;
-              margin-right: 10px;
-
             }
 
             h3 {
+              padding-left: 10px;
+              margin: 0;
               position: relative;
+              max-width: 400px;
               font-weight: 500;
               color: black;
               z-index: 10;
@@ -206,6 +232,7 @@ app-home {
             }
             h3 {
               color: #f5f8ff;
+              
             }
           }
           
@@ -224,17 +251,30 @@ app-home {
     }
     .contact-container {
       width: 100%;
-      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     
       background-color: black;
+      
+      .contact-con {
+        width: 80%;
+        min-height: 100vh;
+
+        -webkit-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+        -moz-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+        box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 }
 
 @media (max-width: 767.98px) {
   .main-container {
-    .mid-nav {
-      display: none;
-    }
+    
     .img-container {
       display: none;
     }
@@ -251,7 +291,11 @@ app-home {
           text-align: center;
           h1 {
           
-            font-size: 4em;
+            font-size: 3.5em;
+          }
+          .buttons-container {
+            padding-top: 10vh;
+            padding-left: 0;
           }
          
         }
@@ -271,6 +315,15 @@ app-home {
       h1 {
         font-size: 2em;
       }
+     
+    }
+    .container {
+      .tab {
+        width: 200px;
+        h3{
+          max-width: 150px;
+        }
+      }
     }
     }
    
@@ -278,15 +331,11 @@ app-home {
   
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
+@media (min-width: 768px) and (max-width: 1300px) {
 
   .main-container {
-    .mid-nav {
-      display: none;
-    }
-    .img-container {
-      display: none;
-    }
+  
+   
     .info-container {
       justify-content: center;
       align-items: center;
@@ -304,6 +353,10 @@ app-home {
           h2  {
             font-size: 2.5rem;
           }
+          .buttons-container {
+            padding-top: 8vh;
+            padding-left: 0;
+          }
         }
       }
       
@@ -320,6 +373,7 @@ app-home {
       h1 {
         font-size: 4em;
       }
+      
     }
     }
    
@@ -327,11 +381,11 @@ app-home {
   
 }
 
-@media (max-width: 1850px) {
+@media (max-width: 1900px) {
   .main-container {
-.img-container {
-  visibility: hidden;
-}  
+ .info-container{
+  background: none;
+ }
 .faq-container {
   .section-faq {
     background-image: none;

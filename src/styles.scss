@@ -14,6 +14,20 @@ a {
   text-decoration: none;
   color: #f5f8ff;
 }
+
+
+.red-snackbar {
+  background: rgb(197, 11, 11) ;
+  color: #f5f8ff ;
+}
+
+.green-snackbar {
+  background: lightgreen;
+  color: #f5f8ff ;
+}
+
+
+
 @import "remixicon/fonts/remixicon.css";
 @import "../src/app/app.component.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
@@ -22,7 +36,7 @@ a {
 @import "../src/app/table/table.component.scss";
 @import "../src/app/home/home.component.scss";
 @import "../src/app/header/header.component.scss";
-@import "../src/app/side-nav/side-nav.component.scss";
+@import "../src/app/table/side-nav/side-nav.component.scss";
 @import "../src/app/footer/footer.component.scss";
-@import "../src/app/mid-nav/mid-nav.component.scss";
-@import "../src/app/header-nav/header-nav.component.scss";
+@import "../src/app/home/mid-nav/mid-nav.component.scss";
+@import "../src/app/header/header-nav/header-nav.component.scss";

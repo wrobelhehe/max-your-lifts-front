@@ -8,6 +8,18 @@ const routes: Routes = [
   {
     path: 'max-your-lifts',
     component: TableComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'max-your-lifts/dashboard',
+        pathMatch: 'full'
+      },
+      
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./max-your-lifts/max-your-lifts.module').then(m =>m.MaxYourLiftsModule)
+      }
+    ]
   },
 ]; // sets up routes constant where you define your routes
 

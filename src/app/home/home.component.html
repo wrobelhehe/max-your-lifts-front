@@ -2,17 +2,16 @@
 
 
 <div class="main-container">
-  <app-mid-nav [@inOutAnimation] [section]="section" [addIndicator]="addIndicator" class="mid-nav" *ngIf="scrolled===1" ></app-mid-nav>
+  <app-mid-nav [@inOutAnimation] [section]="section"  class="mid-nav" *ngIf="scrolled===1" ></app-mid-nav>
 
-  <div class="img-container">
-  </div>
+ 
   <div class="info-container" id="home">
     <div class="info-wrap">
       <div class="text-container">
         <h1 >Max Your Lifts</h1>
         <h2>Application aimed at improving weak links in powerlifting </h2>
         <div class="buttons-container">
-          <button mat-raised-button class="sign-button">Get Started</button>
+          <button mat-raised-button class="sign-button" (click)="signUp()">Get Started</button>
         </div>
       </div>
       
@@ -21,7 +20,6 @@
   <div class="about-container" id="about">
     <div class="about-con">
       <h1>About us</h1>
-      <!-- <div class="section"></div> -->
     </div>
   </div>
   
@@ -36,22 +34,11 @@
         <input type="radio" name="acc" id="acc1" />
         <label for="acc1">
           <h2>01</h2>
-          <h3>first text</h3>
+          <h3> Czy martyna jest piękna </h3>
         </label>
         <div class="content">
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
-            iste officiis. Nulla molestiae magni laudantium, ut eius non modi
-            nobis maiores dolor, aliquid architecto ab natus voluptate provident
-            beatae? Reiciendis alias libero ipsa quasi minus aliquam culpa fuga
-            exercitationem amet ex et veniam vel nobis doloribus magnam, aliquid
-            perferendis suscipit dolores mollitia voluptatibus quas illo
-            dignissimos? Sit delectus eius hic magnam fugit repellendus totam
-            mollitia optio quisquam tempora sapiente obcaecati, voluptates quasi
-            deleniti? Accusantium, illo tenetur rerum nulla nobis, cumque quod a
-            laudantium sed exercitationem sit eos molestias ipsam dicta.
-            Repellendus ea praesentium rem nisi at suscipit aut inventore
-            eligendi!
+            Oczywiscie
           </p>
         </div>
       </div>
@@ -60,91 +47,47 @@
         <input type="radio" name="acc" id="acc2" />
         <label for="acc2">
           <h2>02</h2>
-          <h3>secpmd text</h3>
+          <h3> Czy martyna jest super </h3>
         </label>
         <div class="content">
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
-            iste officiis. Nulla molestiae magni laudantium, ut eius non modi
-            nobis maiores dolor, aliquid architecto ab natus voluptate provident
-            beatae? Reiciendis alias libero ipsa quasi minus aliquam culpa fuga
-            exercitationem amet ex et veniam vel nobis doloribus magnam, aliquid
-            perferendis suscipit dolores mollitia voluptatibus quas illo
-            dignissimos? Sit delectus eius hic magnam fugit repellendus totam
-            mollitia optio quisquam tempora sapiente obcaecati, voluptates quasi
-            deleniti? Accusantium, illo tenetur rerum nulla nobis, cumque quod a
-            laudantium sed exercitationem sit eos molestias ipsam dicta.
-            Repellendus ea praesentium rem nisi at suscipit aut inventore
-            eligendi!
+           Superancka
           </p>
         </div>
       </div>
       <div class="tab">
         <input type="radio" name="acc" id="acc4" />
         <label for="acc4">
-          <h2>04</h2>
-          <h3>fourth text</h3>
+          <h2>03</h2>
+          <h3> Czy martyna jest niexiemska </h3>
         </label>
         <div class="content">
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
-            iste officiis. Nulla molestiae magni laudantium, ut eius non modi
-            nobis maiores dolor, aliquid architecto ab natus voluptate provident
-            beatae? Reiciendis alias libero ipsa quasi minus aliquam culpa fuga
-            exercitationem amet ex et veniam vel nobis doloribus magnam, aliquid
-            perferendis suscipit dolores mollitia voluptatibus quas illo
-            dignissimos? Sit delectus eius hic magnam fugit repellendus totam
-            mollitia optio quisquam tempora sapiente obcaecati, voluptates quasi
-            deleniti? Accusantium, illo tenetur rerum nulla nobis, cumque quod a
-            laudantium sed exercitationem sit eos molestias ipsam dicta.
-            Repellendus ea praesentium rem nisi at suscipit aut inventore
-            eligendi!
+            Jest jest
           </p>
         </div>
       </div>
       <div class="tab">
         <input type="radio" name="acc" id="acc5" />
         <label for="acc5">
-          <h2>05</h2>
-          <h3>fifth text</h3>
+          <h2>04</h2>
+          <h3>Czy poznałeś już Martynę </h3>
         </label>
         <div class="content">
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
-            iste officiis. Nulla molestiae magni laudantium, ut eius non modi
-            nobis maiores dolor, aliquid architecto ab natus voluptate provident
-            beatae? Reiciendis alias libero ipsa quasi minus aliquam culpa fuga
-            exercitationem amet ex et veniam vel nobis doloribus magnam, aliquid
-            perferendis suscipit dolores mollitia voluptatibus quas illo
-            dignissimos? Sit delectus eius hic magnam fugit repellendus totam
-            mollitia optio quisquam tempora sapiente obcaecati, voluptates quasi
-            deleniti? Accusantium, illo tenetur rerum nulla nobis, cumque quod a
-            laudantium sed exercitationem sit eos molestias ipsam dicta.
-            Repellendus ea praesentium rem nisi at suscipit aut inventore
-            eligendi!
+           Ja tak
           </p>
         </div>
       </div>
       <div class="tab">
         <input type="radio" name="acc" id="acc6" />
         <label for="acc6">
-          <h2>06</h2>
-          <h3>sixth text</h3>
+          <h2>05</h2>
+          <h3> Co o niej sądzisz (do wyboru opcje piękna, wspaniała, cudowna, boska)</h3>
         </label>
         <div class="content">
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi,
-            iste officiis. Nulla molestiae magni laudantium, ut eius non modi
-            nobis maiores dolor, aliquid architecto ab natus voluptate provident
-            beatae? Reiciendis alias libero ipsa quasi minus aliquam culpa fuga
-            exercitationem amet ex et veniam vel nobis doloribus magnam, aliquid
-            perferendis suscipit dolores mollitia voluptatibus quas illo
-            dignissimos? Sit delectus eius hic magnam fugit repellendus totam
-            mollitia optio quisquam tempora sapiente obcaecati, voluptates quasi
-            deleniti? Accusantium, illo tenetur rerum nulla nobis, cumque quod a
-            laudantium sed exercitationem sit eos molestias ipsam dicta.
-            Repellendus ea praesentium rem nisi at suscipit aut inventore
-            eligendi!
+           piekan wspaniala cudowna boska
           </p>
         </div>
       </div>
@@ -174,6 +117,16 @@
     </div>
   </div>
 
-  <div class="contact-container" id="contact">Contact</div>
+  <div class="contact-container" id="contact">
+    <div class="contact-con">
+      <div class="form-container">
+        <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+          <mat-label>Enter some input</mat-label>
+          <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+          <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>
