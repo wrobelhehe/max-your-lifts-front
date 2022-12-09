@@ -1,0 +1,25 @@
+app-footer-plans {
+
+  .footer-section {
+    height: 10%;
+    background-color: #004d40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .nav-a {
+      padding: 20px 0;
+      color: #f5f8ff;
+
+    }
+
+    .copy-text {
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #f5f8ff;
+    }
+  }
+}

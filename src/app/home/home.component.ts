@@ -11,22 +11,22 @@ import { SignupComponent } from '../signup/signup.component';
   templateUrl: './home.component.html',
   animations: [
     trigger(
-      'inOutAnimation', 
+      'inOutAnimation',
       [
         transition(
-          ':enter', 
+          ':enter',
           [
             style({ height: 0, opacity: 0 }),
-            animate('0.3s ease-out', 
-                    style({ height: 300, opacity: 1 }))
+            animate('0.3s ease-out',
+              style({ height: 300, opacity: 1 }))
           ]
         ),
         transition(
-          ':leave', 
+          ':leave',
           [
             style({ height: 300, opacity: 1 }),
-            animate('0.3s ease-in', 
-                    style({ height: 0, opacity: 0 }))
+            animate('0.3s ease-in',
+              style({ height: 0, opacity: 0 }))
           ]
         )
       ]
@@ -42,22 +42,22 @@ export class HomeComponent implements OnInit {
 
   scrolled = 0;
 
-  
+
 
   @HostListener('window:scroll')
   onWindowScroll() {
     const numb = window.scrollY;
-    if (numb >= 160){
-    
+    if (numb >= 160) {
+
       this.scrolled = 1;
-  
+
     }
     else {
       this.scrolled = 0;
-      
+
     }
   }
-  
+
   constructor(private dialog: MatDialog,
     private router: Router,
     private userService: UserService) {
@@ -67,10 +67,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('token') != null) {
+    if (localStorage.getItem('token') != null) {
       this.userService.checkToken().subscribe((res: any) => {
-        this.router.navigate(['/max-your-lifts/dashboard'])
-      }, (error: any)=> {
+        this.router.navigate(['/max-your-lifts/plans'])
+      }, (error: any) => {
         console.log(error)
       })
     }
@@ -78,13 +78,13 @@ export class HomeComponent implements OnInit {
   signUp() {
     console.log(window.innerWidth)
     const dialogConfig = new MatDialogConfig()
-    if(window.innerWidth>=768){
-    dialogConfig.width = '650px';
-    
-  } else {
-    dialogConfig.width = '100vw';
-    dialogConfig.height = '100vh'
+    if (window.innerWidth >= 768) {
+      dialogConfig.width = '650px';
+
+    } else {
+      dialogConfig.width = '100vw';
+      dialogConfig.height = '100vh'
+    }
+    this.dialog.open(SignupComponent, dialogConfig)
   }
-    this.dialog.open(SignupComponent,dialogConfig)
-   }
 }

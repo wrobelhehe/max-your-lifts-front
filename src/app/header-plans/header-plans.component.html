@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+    <div class="menu-container">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+            (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>MaxYourLifts</span>
+    </div>
+    <div class="user-container">
+        <button [matMenuTriggerFor]="profile" mat-icon-button class="example-icon"
+            aria-label="Example icon-button with menu icon">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #profile="matMenu" class="mymegamenu">
+            <button mat-menu-item (click)="changePassword()">
+                <mat-icon>password</mat-icon> Change Password
+            </button>
+            <button mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon> Logout
+            </button>
+        </mat-menu>
+    </div>
+
+
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav [mode]="'push'">
+        <mat-nav-list>
+            <mat-list-item *ngFor="let menuItem of menuItems.getMenuItem()" routerLinkActive="selected"
+                group="menuItem.state">
+                <a [routerLink]="['max-your-lifts', menuItem.state]"
+                    *ngIf="(menuItem.role === '' || menuItem.role === tokenPayLoad.role)">
+                    <mat-icon>{{menuItem.icon}}</mat-icon>
+                    <span>{{menuItem.name}}</span>
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content" style="height: 100vh"></div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
