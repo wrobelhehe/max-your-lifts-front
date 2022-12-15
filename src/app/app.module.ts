@@ -8,12 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { MaxYourLiftsModule } from './max-your-lifts/max-your-lifts.module';
+import { MaxYourLiftsModule } from './max-your-lifts.module';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from "ngx-ui-loader"
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
-import { ConfirmComponent } from './confirm/confirm.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
+
+import { SharedModule } from './shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -42,6 +43,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     BrowserModule,
     MaterialModule,
     BrowserAnimationsModule,
+    RouterModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -49,6 +51,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     MatSnackBarModule,
+    SharedModule
 
 
 

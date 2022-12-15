@@ -3,9 +3,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import jwt_Decode from 'jwt-decode';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { ChangePasswordComponent } from '../change-password/change-password.component';
-import { ConfirmComponent } from '../confirm/confirm.component';
-import { MenuItems } from '../shared/menu-items';
+import { ChangePasswordComponent } from '../../dialog/change-password/change-password.component';
+import { ConfirmComponent } from '../../dialog/confirm/confirm.component';
+import { MenuItems } from '../../shared/menu-items';
 
 @Component({
   selector: 'app-header-plans',
@@ -13,13 +13,15 @@ import { MenuItems } from '../shared/menu-items';
   styleUrls: ['./header-plans.component.scss']
 })
 export class HeaderPlansComponent {
-  token: any = localStorage.getItem('token')
-  tokenPayLoad: any
+  accessToken: any = localStorage.getItem('accessToken')
+  accessTokenPayLoad: any
 
   role: any
 
+  opened: boolean = false
+
   constructor(public menuItems: MenuItems, private ngxService: NgxUiLoaderService, private router: Router, private dialog: MatDialog) {
-    this.tokenPayLoad = jwt_Decode(this.token)
+    this.accessTokenPayLoad = jwt_Decode(this.accessToken)
   }
 
   logout(): void {
@@ -48,6 +50,11 @@ export class HeaderPlansComponent {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "650px"
     this.dialog.open(ChangePasswordComponent, dialogConfig)
+  }
+
+
+  changeState(item: any): void {
+    this.router.navigate(["/max-your-lifts/" + item])
   }
 
 }

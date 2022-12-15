@@ -36,12 +36,12 @@ a {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 
-@import "../src/app/table/table.component.scss";
+@import "../src/app/main-home/main-home.component.scss";
 @import "../src/app/home/home.component.scss";
 @import "../src/app/header/header.component.scss";
-@import "../src/app/footer/footer.component.scss";
+@import "../src/app/home/footer/footer.component.scss";
 @import "../src/app/home/mid-nav/mid-nav.component.scss";
 @import "../src/app/header/header-nav/header-nav.component.scss";
-@import '../src/app/header-plans/header-plans.component.scss';
-@import "../src/app/footer-plans/footer-plans.component.scss";
-@import '../src/app/confirm/confirm.component.scss'
+@import '../src/app/main-home/header-plans/header-plans.component.scss';
+@import "../src/app/main-home/footer-plans/footer-plans.component.scss";
+@import '../src/app/dialog/confirm/confirm.component.scss'

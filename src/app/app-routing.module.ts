@@ -2,28 +2,33 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; // CLI imports router
 import { HomeComponent } from './home/home.component';
 import { RouterGuardService } from './services/router-guard.service';
-import { TableComponent } from './table/table.component';
+import { MainHomeComponent } from './main-home/main-home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'max-your-lifts',
-    component: TableComponent,
+    component: MainHomeComponent,
     children: [
       {
         path: '',
         redirectTo: 'max-your-lifts/plans',
         pathMatch: 'full'
       },
-
+      {
+        path: '',
+        loadChildren:
+          () => import('./main-home/nav-components/nav-components.module').then(m => m.NavComponentsModule),
+      },
       {
         path: 'plans',
-        loadChildren: () => import('./max-your-lifts/max-your-lifts.module').then(m => m.MaxYourLiftsModule),
+        loadChildren: () => import('./main-home/plans/plans.module').then(m => m.PlansModule),
         canActivate: [RouterGuardService],
         data: {
           expectedRole: ['admin', 'user']
         }
-      }
+      },
+
     ]
   },
   {

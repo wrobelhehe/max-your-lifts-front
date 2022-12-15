@@ -23,20 +23,20 @@
 
 
 </mat-toolbar>
-<mat-sidenav-container>
+<mat-sidenav-container [hasBackdrop]="false">
     <mat-sidenav #sidenav [mode]="'push'">
         <mat-nav-list>
-            <mat-list-item *ngFor="let menuItem of menuItems.getMenuItem()" routerLinkActive="selected"
-                group="menuItem.state">
-                <a [routerLink]="['max-your-lifts', menuItem.state]"
-                    *ngIf="(menuItem.role === '' || menuItem.role === tokenPayLoad.role)">
+            <li *ngFor="let menuItem of menuItems.getMenuItem()" routerLinkActive="selected">
+                <a [routerLink]="[menuItem.state]"
+                    *ngIf="(menuItem.role === '' || menuItem.role === accessTokenPayLoad.role)">
                     <mat-icon>{{menuItem.icon}}</mat-icon>
                     <span>{{menuItem.name}}</span>
                 </a>
-            </mat-list-item>
+            </li>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div class="content" style="height: 100vh"></div>
+        <router-outlet></router-outlet>
+        <div class="content" style="height: 100vh">hi</div>
     </mat-sidenav-content>
 </mat-sidenav-container>

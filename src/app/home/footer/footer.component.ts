@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
-import { SignupComponent } from '../signup/signup.component';
+import { LoginComponent } from '../../dialog/login/login.component';
+import { SignupComponent } from '../../dialog/signup/signup.component';
 
 
 @Component({
@@ -18,11 +18,11 @@ export class FooterComponent {
   signUp() {
     const dialogConfig = new MatDialogConfig()
     dialogConfig.width = '650px';
-    this.dialog.open(SignupComponent,dialogConfig)
-   }
+    this.dialog.open(SignupComponent, dialogConfig)
+  }
 
 
-   login() : void {
+  login(): void {
     const dialogConfig = new MatDialogConfig()
     dialogConfig.width = "650px";
     this.dialog.open(LoginComponent, dialogConfig)

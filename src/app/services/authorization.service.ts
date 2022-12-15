@@ -6,20 +6,20 @@ import { Router } from '@angular/router';
 })
 export class AuthorizationService {
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
 
   }
 
-  public isAuthenticated() : boolean {
-  const token = localStorage.getItem('token')
-  if(!token) {
-    this.router.navigate(["/"])
-    return false
+  public isAuthenticated(): boolean {
+    const accessToken = localStorage.getItem('accessToken')
+    if (!accessToken) {
+      this.router.navigate(["/"])
+      return false
+    }
+    else {
+      return true
+    }
   }
-  else {
-    return true
-  }
-  }
-  
+
 
 }

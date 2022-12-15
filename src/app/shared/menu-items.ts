@@ -8,7 +8,10 @@ export interface Menu {
 }
 
 const MENUITEMS = [
-    { state: 'plans', name: 'Plans', icon: 'assignment', role: '' }
+    { state: 'plans', name: 'Plans', icon: 'assignment', role: '' },
+    { state: 'category', name: 'Manage Category', icon: 'category', role: 'admin' },
+
+
 ]
 
 @Injectable()

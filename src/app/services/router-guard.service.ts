@@ -20,10 +20,10 @@ export class RouterGuardService {
 
     let expectedRoleArray: any = route.data;
     expectedRoleArray = expectedRoleArray.expectedRole
-    const token: any = localStorage.getItem('token')
-    var tokenPayLoad: any;
+    const accessToken: any = localStorage.getItem('accessToken')
+    var accessTokenPayLoad: any;
     try {
-      tokenPayLoad = jwt_Decode(token)
+      accessTokenPayLoad = jwt_Decode(accessToken)
     }
     catch (err) {
       localStorage.clear()
@@ -33,11 +33,11 @@ export class RouterGuardService {
     let checkRole = false;
 
     for (let i = 0; i < expectedRoleArray.length; i++) {
-      if (expectedRoleArray[i] == tokenPayLoad.role) {
+      if (expectedRoleArray[i] == accessTokenPayLoad.role) {
         checkRole = true
       }
     }
-    if (tokenPayLoad.role == 'user' || tokenPayLoad.role == 'admin') {
+    if (accessTokenPayLoad.role == 'user' || accessTokenPayLoad.role == 'admin') {
       if (this.auth.isAuthenticated() && checkRole) {
         return true
       }

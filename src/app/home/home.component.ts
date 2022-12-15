@@ -3,7 +3,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { SignupComponent } from '../signup/signup.component';
+import { SignupComponent } from '../dialog/signup/signup.component';
 
 
 @Component({
