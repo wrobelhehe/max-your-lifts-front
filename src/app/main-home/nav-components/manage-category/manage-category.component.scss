@@ -1,0 +1,75 @@
+.manage-category {
+
+
+
+    padding-top: 100px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    min-height: 85vh;
+
+
+
+
+    mat-card {
+        width: 70%;
+        flex-direction: row;
+        margin-bottom: 50px;
+    }
+
+
+
+    .header-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h1 {
+            padding: 0 16px;
+        }
+    }
+
+
+    .add-cat {
+        padding: 0 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+            padding-right: 16px;
+        }
+    }
+
+    .float-right {
+        font-size: 1.2em;
+    }
+
+    mat-form-field {
+        width: 100%;
+
+    }
+
+
+
+    .responsive-table {
+        width: 70%;
+
+
+        .action-th {
+            text-align: end;
+
+        }
+
+        .action-td {
+            display: flex;
+            justify-content: flex-end;
+
+        }
+
+
+
+    }
+}

@@ -26,9 +26,10 @@
 <mat-sidenav-container [hasBackdrop]="false">
     <mat-sidenav #sidenav [mode]="'push'">
         <mat-nav-list>
-            <li *ngFor="let menuItem of menuItems.getMenuItem()" routerLinkActive="selected">
+            <li [ngClass]="{ 'selected': router.isActive(menuItem.state, true) }"
+                *ngFor="let menuItem of menuItems.getMenuItem()" routerLinkActive="selected">
                 <a [routerLink]="[menuItem.state]"
-                    *ngIf="(menuItem.role === '' || menuItem.role === accessTokenPayLoad.role)">
+                    *ngIf="(menuItem.role === '' || menuItem.role === tokenPayLoad.role)">
                     <mat-icon>{{menuItem.icon}}</mat-icon>
                     <span>{{menuItem.name}}</span>
                 </a>
@@ -37,6 +38,5 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>
-        <div class="content" style="height: 100vh">hi</div>
     </mat-sidenav-content>
 </mat-sidenav-container>

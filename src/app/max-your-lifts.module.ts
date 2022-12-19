@@ -18,12 +18,14 @@ import { ConfirmComponent } from './dialog/confirm/confirm.component';
 import { FooterPlansComponent } from './main-home/footer-plans/footer-plans.component';
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
 import { ManageCategoryComponent } from './main-home/nav-components/manage-category/manage-category.component';
+import { CategoryComponent } from './dialog/category/category.component';
+import { ExerciseComponent } from './main-home/nav-components/exercise/exercise.component';
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, FooterPlansComponent, MainHomeComponent, ConfirmComponent, HeaderComponent, FooterComponent, MidNavComponent, HeaderNavComponent, SignupComponent, ForgotPasswordComponent, LoginComponent, HeaderPlansComponent, ChangePasswordComponent, ManageCategoryComponent],
+  declarations: [HomeComponent, FooterPlansComponent, MainHomeComponent, ConfirmComponent, CategoryComponent, HeaderComponent, FooterComponent, MidNavComponent, HeaderNavComponent, SignupComponent, ForgotPasswordComponent, LoginComponent, HeaderPlansComponent, ChangePasswordComponent, ManageCategoryComponent, ExerciseComponent],
   imports: [
     CommonModule,
     MaterialModule,

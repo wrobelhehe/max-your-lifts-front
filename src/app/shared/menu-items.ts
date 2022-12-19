@@ -9,7 +9,9 @@ export interface Menu {
 
 const MENUITEMS = [
     { state: 'plans', name: 'Plans', icon: 'assignment', role: '' },
-    { state: 'category', name: 'Manage Category', icon: 'category', role: 'admin' },
+    { state: 'category', name: 'Manage Categories', icon: 'category', role: 'admin' },
+    { state: 'exercise', name: 'Manage Exercises', icon: 'fitness_center', role: 'admin' },
+
 
 
 ]

@@ -32,6 +32,12 @@ export class UserService {
     return this.httpClient.get(this.url + "/user/checkToken")
   }
 
+  getNewToken(refreshToken: any): Observable<any> {
+    return this.httpClient.post(this.url + '/user/token', { refreshToken }, {
+      headers: new HttpHeaders().set("Content-Type", "application/json")
+    })
+  }
+
 
   changePassword(data: any): Observable<any> {
     return this.httpClient.post(this.url + '/user/changePassword', data, { headers: new HttpHeaders().set('Content-Type', "application/json") })

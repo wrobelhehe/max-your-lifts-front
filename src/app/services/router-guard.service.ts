@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import jwt_Decode from 'jwt-decode';
+import { map, Observable, of } from 'rxjs';
 import { GlobalConstants } from '../shared/global-constans';
 import { AuthorizationService } from './authorization.service';
 import { SnackbarService } from './snackbar.service';
@@ -12,18 +13,23 @@ export class RouterGuardService {
 
   constructor(private auth: AuthorizationService,
     private router: Router,
-    private snackbarService: SnackbarService) { }
+    private snackbarService: SnackbarService, private authService: AuthorizationService) { }
 
 
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
 
+
+
+
     let expectedRoleArray: any = route.data;
+    console.log(expectedRoleArray)
     expectedRoleArray = expectedRoleArray.expectedRole
-    const accessToken: any = localStorage.getItem('accessToken')
-    var accessTokenPayLoad: any;
+    const accessToken: any = this.authService.getAccessToken()
+    var tokenPayLoad: any;
     try {
-      accessTokenPayLoad = jwt_Decode(accessToken)
+      tokenPayLoad = jwt_Decode(accessToken)
+      console.log(tokenPayLoad)
     }
     catch (err) {
       localStorage.clear()
@@ -33,22 +39,35 @@ export class RouterGuardService {
     let checkRole = false;
 
     for (let i = 0; i < expectedRoleArray.length; i++) {
-      if (expectedRoleArray[i] == accessTokenPayLoad.role) {
+      if (expectedRoleArray[i] == tokenPayLoad.role) {
         checkRole = true
       }
     }
-    if (accessTokenPayLoad.role == 'user' || accessTokenPayLoad.role == 'admin') {
-      if (this.auth.isAuthenticated() && checkRole) {
+    if (tokenPayLoad.role == 'user' || tokenPayLoad.role == 'admin') {
+      if (this.authService.isAuthenticated() && checkRole) {
         return true
+      } else {
+        this.snackbarService.openToast(GlobalConstants.unauthorized, GlobalConstants.error)
+        this.router.navigate(['/max-your-lifts/plans'])
+        // localStorage.clear()
+        return false
       }
-      this.snackbarService.openToast(GlobalConstants.unauthorized, GlobalConstants.error)
-      this.router.navigate(['/max-your-lifts/plans'])
-      return false
+
     }
     else {
-      this.router.navigate(['/'])
-      localStorage.clear()
+      this.router.navigate(['/max-your-lifts/plans'])
+      // localStorage.clear()
       return false
     }
+
   }
+
+
+
 }
+
+
+
+
+
+

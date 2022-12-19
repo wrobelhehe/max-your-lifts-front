@@ -1,7 +1,8 @@
 <mat-dialog-content class="mat-typography">
-    <h5 style="font-size: 20px">Are you want to {{details.message}}?</h5>
+    <h3>Are you want to {{details.message}}?</h3>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="handleChangeAction()">Yes</button>
     <button mat-raised-button mat-dialog-close>No</button>
+    <button mat-raised-button color="primary" (click)="handleChangeAction()">Yes</button>
+
 </mat-dialog-actions>

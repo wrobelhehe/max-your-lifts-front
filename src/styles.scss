@@ -1,6 +1,34 @@
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #004d40 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #004d40;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+
+
 html {
   scroll-behavior: smooth;
+
 }
+
+
+
 
 body {
   margin: 0;
@@ -44,4 +72,6 @@ a {
 @import "../src/app/header/header-nav/header-nav.component.scss";
 @import '../src/app/main-home/header-plans/header-plans.component.scss';
 @import "../src/app/main-home/footer-plans/footer-plans.component.scss";
-@import '../src/app/dialog/confirm/confirm.component.scss'
+@import '../src/app/dialog/confirm/confirm.component.scss';
+// @import '../src/app/main-home/nav-components/manage-category/manage-category.component.scss';
+@import '../src/app/main-home/nav-components/exercise/exercise.component.scss'

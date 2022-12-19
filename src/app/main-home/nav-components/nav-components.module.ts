@@ -10,18 +10,16 @@ import { MaterialModule } from 'src/app/shared/material.module';
 
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule.forChild(NavComponentsRoutes),
-        MaterialModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        CdkTableModule
-    ],
-    providers: [],
-    declarations: [
-
-    ]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(NavComponentsRoutes),
+    MaterialModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CdkTableModule
+  ],
+  providers: [],
+  declarations: []
 })
 export class NavComponentsModule { }

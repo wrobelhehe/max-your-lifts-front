@@ -18,13 +18,39 @@ app-header-plans {
         }
     }
 
+    mat-nav-list {
+        padding: 0
+    }
 
     mat-sidenav {
         background-color: red;
+        width: 200px;
     }
 
     li {
+
         padding: 10px 0;
+    }
+
+
+
+    li.selected:hover {
+        background-color: #0A5448;
+
+    }
+
+    li.selected:active {
+        background-color: #3A6A5F;
+    }
+
+    li.selected {
+        transition: all 0.3s;
+        background-color: #004d40;
+        border-radius: 5%;
+
+        a {
+            color: #f5f8ff
+        }
     }
 
     a {

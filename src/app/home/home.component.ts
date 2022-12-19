@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('token') != null) {
+    if (localStorage.getItem('accessToken') != null) {
       this.userService.checkToken().subscribe((res: any) => {
         this.router.navigate(['/max-your-lifts/plans'])
       }, (error: any) => {

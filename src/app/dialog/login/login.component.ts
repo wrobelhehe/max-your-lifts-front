@@ -55,6 +55,8 @@ export class LoginComponent implements OnInit {
       this.ngxService.stop();
       this.dialogRef.close();
       localStorage.setItem('accessToken', response.accessToken)
+      localStorage.setItem('refreshToken', response.refreshToken)
+
 
       this.router.navigate(['/max-your-lifts/plans'])
 

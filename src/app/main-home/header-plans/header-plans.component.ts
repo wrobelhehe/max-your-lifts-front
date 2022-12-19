@@ -14,14 +14,14 @@ import { MenuItems } from '../../shared/menu-items';
 })
 export class HeaderPlansComponent {
   accessToken: any = localStorage.getItem('accessToken')
-  accessTokenPayLoad: any
+  tokenPayLoad: any
 
   role: any
 
   opened: boolean = false
 
-  constructor(public menuItems: MenuItems, private ngxService: NgxUiLoaderService, private router: Router, private dialog: MatDialog) {
-    this.accessTokenPayLoad = jwt_Decode(this.accessToken)
+  constructor(public menuItems: MenuItems, private ngxService: NgxUiLoaderService, public router: Router, private dialog: MatDialog) {
+    this.tokenPayLoad = jwt_Decode(this.accessToken)
   }
 
   logout(): void {
