@@ -47,12 +47,12 @@ a {
 }
 
 
-.red-snackbar {
+*.red-snackbar {
   background: rgb(197, 11, 11);
   color: #f5f8ff;
 }
 
-.green-snackbar {
+*.green-snackbar {
   background: lightgreen;
   color: #f5f8ff;
 }
@@ -73,5 +73,7 @@ a {
 @import '../src/app/main-home/header-plans/header-plans.component.scss';
 @import "../src/app/main-home/footer-plans/footer-plans.component.scss";
 @import '../src/app/dialog/confirm/confirm.component.scss';
-// @import '../src/app/main-home/nav-components/manage-category/manage-category.component.scss';
-@import '../src/app/main-home/nav-components/exercise/exercise.component.scss'
+@import '../src/app/main-home/nav-components/manage-category/manage-category.component.scss';
+@import '../src/app/main-home/nav-components/manage-exercise/manage-exercise.component.scss';
+@import '../src/app/dialog/category/category.component.scss';
+@import '../src/app/dialog/exercise/exercise.component.scss'

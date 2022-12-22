@@ -1,0 +1,79 @@
+<div class="manage-exercise">
+    <mat-card class="header-card">
+        <h1>Manage Exercise</h1>
+        <div class="add-cat">
+            <span class="add">Add Exercise</span>
+            <button mat-fab color="primary" class="float-right" (click)="handleAddAction()"><mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <mat-card class="filter-card">
+        <mat-form-field appearance="fill">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" #input>
+        </mat-form-field>
+    </mat-card>
+    <div class="responsive-table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="name">
+                <th class="name-th" mat-header-cell *matHeaderCellDef>Name</th>
+                <td class="name-td td" mat-cell *matCellDef="let element">{{element.name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="category_name">
+                <th class="category_name-th" mat-header-cell *matHeaderCellDef>Category</th>
+                <td class="category_name-td td" mat-cell *matCellDef="let element">
+                    {{element.category_name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th class="description-th" mat-header-cell *matHeaderCellDef>Description</th>
+                <td class="description-td td" mat-cell *matCellDef="let element">
+                    {{element.description}}</td>
+            </ng-container>
+            <ng-container matColumnDef="video_url">
+                <th class="video_url-th center" mat-header-cell *matHeaderCellDef>Video</th>
+                <td class="video_url-td td center" mat-cell *matCellDef="let element"><button
+                        (click)="openLink(element.video_url)" mat-icon-button
+                        matTooltip="Movie"><mat-icon>movie</mat-icon></button>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sets">
+                <th class="sets-th center" mat-header-cell *matHeaderCellDef>Sets</th>
+                <td class="sets-td td center" mat-cell *matCellDef="let element">{{element.sets}}</td>
+            </ng-container>
+            <ng-container matColumnDef="reps">
+                <th class="reps-th center" mat-header-cell *matHeaderCellDef>Reps</th>
+                <td class="reps-td td center" mat-cell *matCellDef="let element">{{element.reps}}</td>
+            </ng-container>
+            <ng-container matColumnDef="rpe">
+                <th class="rpe-th center" mat-header-cell *matHeaderCellDef>RPE</th>
+                <td class="rpe-td td center" mat-cell *matCellDef="let element">{{element.rpe}}</td>
+            </ng-container>
+            <ng-container matColumnDef="tempo">
+                <th class="tempo-th center" mat-header-cell *matHeaderCellDef>Tempo</th>
+                <td class="tempo-td td center" mat-cell *matCellDef="let element">{{element.tempo}}</td>
+            </ng-container>
+            <ng-container matColumnDef="edit">
+                <th class="action-th center" mat-header-cell *matHeaderCellDef>Action</th>
+                <td class="action-td td" mat-cell *matCellDef="let element">
+                    <button mat-icon-button color="primary" matTooltip="Edit" (click)="handleEditAction(element)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" matTooltip="Delete" (click)="handleDeleteAction(element)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                    <mat-slide-toggle (change)="onChange($event.checked,element.id)"
+                        matTooltip="Activate or Deactivate Exercise" [checked]="element.status"></mat-slide-toggle>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+            <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+        </table>
+        <br>
+        <mat-paginator [length]="dataSource.data.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+            (page)="pageEvent = $event">
+        </mat-paginator>
+    </div>
+
+
+</div>

@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
 import { RouterGuardService } from "src/app/services/router-guard.service";
-import { ExerciseComponent } from "./exercise/exercise.component";
 import { ManageCategoryComponent } from "./manage-category/manage-category.component";
+import { ManageExerciseComponent } from "./manage-exercise/manage-exercise.component";
 import { PlansComponent } from "./plans/plans.component";
 
 
@@ -26,7 +26,7 @@ export const NavComponentsRoutes: Routes = [
     },
     {
         path: 'exercise',
-        component: ExerciseComponent,
+        component: ManageExerciseComponent,
         canActivate: [RouterGuardService],
         data: {
             expectedRole: ['admin']

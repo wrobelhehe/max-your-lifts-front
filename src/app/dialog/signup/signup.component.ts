@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  close() {
+  close(): void {
     this.router.navigate(["/"])
     this.dialogRef.close();
 
@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
   }
 
 
-  handleSubmit() {
+  handleSubmit(): void {
     this.ngxService.start();
     var formData = this.signupForm.value;
     var data = {

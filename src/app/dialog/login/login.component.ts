@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  close() {
+  close(): void {
     this.router.navigate(["/"])
     this.dialogRef.close();
 
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  handleSubmit() {
+  handleSubmit(): void {
     this.ngxService.start();
     var formData = this.loginForm.value;
     var data = {

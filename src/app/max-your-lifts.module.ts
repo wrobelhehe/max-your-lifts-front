@@ -19,13 +19,15 @@ import { FooterPlansComponent } from './main-home/footer-plans/footer-plans.comp
 import { ChangePasswordComponent } from './dialog/change-password/change-password.component';
 import { ManageCategoryComponent } from './main-home/nav-components/manage-category/manage-category.component';
 import { CategoryComponent } from './dialog/category/category.component';
-import { ExerciseComponent } from './main-home/nav-components/exercise/exercise.component';
+import { ManageExerciseComponent } from './main-home/nav-components/manage-exercise/manage-exercise.component';
+import { ExerciseComponent } from './dialog/exercise/exercise.component';
+import { ExerciseCategoryPipe } from './dialog/exercise/exerciseCategory.pipe';
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, FooterPlansComponent, MainHomeComponent, ConfirmComponent, CategoryComponent, HeaderComponent, FooterComponent, MidNavComponent, HeaderNavComponent, SignupComponent, ForgotPasswordComponent, LoginComponent, HeaderPlansComponent, ChangePasswordComponent, ManageCategoryComponent, ExerciseComponent],
+  declarations: [HomeComponent, FooterPlansComponent, MainHomeComponent, ConfirmComponent, CategoryComponent, HeaderComponent, FooterComponent, MidNavComponent, HeaderNavComponent, SignupComponent, ForgotPasswordComponent, LoginComponent, HeaderPlansComponent, ChangePasswordComponent, ManageCategoryComponent, ManageExerciseComponent, ExerciseComponent, ExerciseCategoryPipe],
   imports: [
     CommonModule,
     MaterialModule,

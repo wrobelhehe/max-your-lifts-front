@@ -8,7 +8,7 @@
 
 mat-toolbar-row {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
 }
@@ -23,4 +23,26 @@ mat-dialog-actions {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+
+.icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.icon:hover {
+    color: black;
+    transition: all 0.2s;
+    background-color: #003a30;
+
 }

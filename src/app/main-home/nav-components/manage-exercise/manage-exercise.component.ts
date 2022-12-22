@@ -1,28 +1,27 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatTab } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { CategoryComponent } from 'src/app/dialog/category/category.component';
+import { ExerciseComponent } from 'src/app/dialog/exercise/exercise.component';
 import { CategoryService } from 'src/app/services/category.service';
+import { ExerciseService } from 'src/app/services/exercise.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstants } from 'src/app/shared/global-constans';
 
 @Component({
-  selector: 'app-manage-category',
-  templateUrl: './manage-category.component.html',
-  styleUrls: ['./manage-category.component.scss']
+  selector: 'app-manage-exercise',
+  templateUrl: './manage-exercise.component.html',
+  styleUrls: ['./manage-exercise.component.scss']
 })
-export class ManageCategoryComponent implements OnInit {
+export class ManageExerciseComponent {
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['name', 'edit'];
-  dataSource: any;
+  displayedColumns: any[] = ['name', 'description', 'category_name', 'video_url', 'sets', 'reps', 'rpe', 'tempo', 'edit'];
+  dataSource: any
   responseMessage: any;
-
 
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageSize = this.pageSizeOptions[0];
@@ -32,7 +31,7 @@ export class ManageCategoryComponent implements OnInit {
   constructor(private ngxService: NgxUiLoaderService,
     private dialog: MatDialog,
     private snackbarService: SnackbarService,
-    private categoryService: CategoryService,
+    private exerciseService: ExerciseService,
     private router: Router) {
     this.pageEvent = { pageIndex: 0, pageSize: 5, length: 0 };
 
@@ -42,13 +41,21 @@ export class ManageCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.ngxService.start()
     this.tableData()
+
+  }
+
+
+  openLink(link: string): void {
+    window.open(link, '_blank');
   }
 
   tableData(): void {
-    this.categoryService.getCategories().subscribe((response: any) => {
+    this.exerciseService.getExercises().subscribe((response: any) => {
       this.ngxService.stop()
       this.dataSource = new MatTableDataSource(response)
       this.dataSource.paginator = this.paginator;
+      console.log(this.dataSource)
+
 
     }, (error: any) => {
       this.ngxService.stop()
@@ -67,36 +74,38 @@ export class ManageCategoryComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase()
   }
 
-  handleAddAction() {
+  handleAddAction(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       action: "Add"
     }
-    dialogConfig.width = "650px"
-    const dialogRef = this.dialog.open(CategoryComponent, dialogConfig)
+    dialogConfig.width = "1250px"
+    const dialogRef = this.dialog.open(ExerciseComponent, dialogConfig)
     this.router.events.subscribe(() => {
       dialogRef.close()
     })
-    const sub = dialogRef.componentInstance.onAddCategory.subscribe((response) => {
+    const sub = dialogRef.componentInstance.onAddExercise.subscribe((response) => {
       this.tableData()
     })
   }
-
-  handleEditAction(value: any) {
-
+  handleEditAction(value: any): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       action: "Edit",
       values: value
     }
-    dialogConfig.width = "650px"
-    const dialogRef = this.dialog.open(CategoryComponent, dialogConfig)
+    console.log(dialogConfig.data)
+    dialogConfig.width = "1250px"
+    const dialogRef = this.dialog.open(ExerciseComponent, dialogConfig)
     this.router.events.subscribe(() => {
       dialogRef.close()
     })
-    const sub = dialogRef.componentInstance.onEditCategory.subscribe((response) => {
+    const sub = dialogRef.componentInstance.onEditExercise.subscribe((response) => {
       this.tableData()
     })
   }
 
+  handleDeleteAction(element: any): void { }
+
+  onChange(status: any, id: any): void { }
 }

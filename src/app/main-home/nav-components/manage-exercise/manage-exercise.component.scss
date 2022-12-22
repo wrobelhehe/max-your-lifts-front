@@ -1,5 +1,5 @@
-app-manage-category {
-    .manage-category {
+app-manage-exercise {
+    .manage-exercise {
         padding: 100px 0;
 
         display: flex;
@@ -17,7 +17,7 @@ app-manage-category {
             justify-content: space-between;
             align-items: center;
             flex-direction: row;
-            width: 70%;
+            width: 95%;
 
             h1 {
                 padding: 0 16px;
@@ -35,13 +35,12 @@ app-manage-category {
 
                 .float-right {
                     font-size: 1.2em;
-                    margin: 0;
                 }
             }
         }
 
         .filter-card {
-            width: 70%;
+            width: 95%;
 
             mat-form-field {
                 width: 100%;
@@ -51,23 +50,34 @@ app-manage-category {
         }
 
         .responsive-table {
-            width: 70%;
+            width: 95%;
 
             .td {
                 min-height: 80px;
+                ;
             }
 
-            .action-th {
-                text-align: end;
+
+            .video_url-td {
+                color: #004d40;
             }
 
             .action-td {
                 display: flex;
-                justify-content: flex-end;
-                flex-direction: row;
+                justify-content: center;
                 align-items: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+            }
+
+            .center {
+                text-align: center;
             }
         }
 
     }
+
+
+
 }
