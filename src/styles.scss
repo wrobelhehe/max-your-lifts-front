@@ -2,7 +2,7 @@
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #004d40 #ffffff;
+  scrollbar-color: #FAFAFA;
 }
 
 /* Chrome, Edge, and Safari */
@@ -11,13 +11,13 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #FAFAFA;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #004d40;
+  background-color: #FAFAFA;
   border-radius: 10px;
-  border: 3px solid #ffffff;
+  border: 3px solid #FAFAFA;
 }
 
 
@@ -76,4 +76,5 @@ a {
 @import '../src/app/main-home/nav-components/manage-category/manage-category.component.scss';
 @import '../src/app/main-home/nav-components/manage-exercise/manage-exercise.component.scss';
 @import '../src/app/dialog/category/category.component.scss';
-@import '../src/app/dialog/exercise/exercise.component.scss'
+@import '../src/app/dialog/exercise/exercise.component.scss';
+@import '../src/app/main-home/nav-components/manage-plans/manage-plans.component.scss';

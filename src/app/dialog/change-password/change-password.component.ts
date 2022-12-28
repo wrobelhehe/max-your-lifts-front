@@ -14,6 +14,12 @@ import { GlobalConstants } from '../../shared/global-constans';
 export class ChangePasswordComponent implements OnInit {
   changePasswordForm: any = FormGroup
   responseMessage: any;
+  hide1 = true;
+
+  hide2 = true;
+
+  hide3 = true;
+
 
   constructor(private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<ChangePasswordComponent>,

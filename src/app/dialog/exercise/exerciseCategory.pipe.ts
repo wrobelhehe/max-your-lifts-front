@@ -5,6 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ExerciseCategoryPipe implements PipeTransform {
     transform(values: number[]): string {
+        console.log('Values:', values);
+        if (!values || values.length === 0) {
+            return '';
+        }
+
         let result = '';
         for (let i = 0; i < values.length; i++) {
             const value = values[i];
@@ -28,5 +33,6 @@ export class ExerciseCategoryPipe implements PipeTransform {
         }
         return result;
     }
+
 
 }

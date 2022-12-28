@@ -21,7 +21,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
   ]
 })
 export class ExerciseComponent implements OnInit {
-  displayedColumns: any[] = ['name', 'description', 'categoryId', 'video_url', 'sets', 'reps', 'rpe', 'tempo'];
+  displayedColumns: any[] = ['name', 'description', 'category_id', 'video_url', 'sets', 'reps', 'rpe', 'tempo'];
 
 
 
@@ -63,7 +63,7 @@ export class ExerciseComponent implements OnInit {
     this.exerciseForm = this.formBuilder.group({
       name: [null, [Validators.required]],
       description: [null, [Validators.required]],
-      categoryId: [this.selectedValue, [Validators.required]],
+      category_id: [[], [Validators.required]],
       video_url: [null, [Validators.required]],
 
 
@@ -80,29 +80,32 @@ export class ExerciseComponent implements OnInit {
       summary: [null, [Validators.required]]
     })
 
-
+    console.log(this.dialogData.values)
+    console.log(this.dialogData?.allCategories)
 
     if (this.dialogData.action === "Edit") {
       this.dialogAction = "Edit"
       this.action = "Update"
-      const arg1 = {
-        name: this.dialogData.values.name,
-        description: this.dialogData.values.description,
-        categoryId: this.dialogData.values.categoryId,
-        video_url: this.dialogData.values.video_url
-      }
-      const arg2 = {
-        sets: this.dialogData.values.sets,
-        reps: this.dialogData.values.reps,
+      this.exerciseService.getById(this.dialogData.values.id).subscribe((response) => {
+        const arg1 = {
+          name: this.dialogData.values.name,
+          description: this.dialogData.values.description,
+          category_id: response.category_id,
+          video_url: this.dialogData.values.video_url
+        }
+        const arg2 = {
+          sets: this.dialogData.values.sets,
+          reps: this.dialogData.values.reps,
 
-        rpe: this.dialogData.values.rpe,
+          rpe: this.dialogData.values.rpe,
 
-        tempo: this.dialogData.values.tempo,
-      }
-      this.exerciseForm.patchValue(arg1)
-      console.log(this.dialogData.values)
-      this.exerciseDetailsForm.patchValue(arg2)
-      console.log(this.dialogData.values)
+          tempo: this.dialogData.values.tempo,
+        }
+        this.exerciseForm.patchValue(arg1)
+        console.log(this.exerciseForm.value)
+        this.exerciseDetailsForm.patchValue(arg2)
+      })
+
     }
     this.getCategories()
 
@@ -116,7 +119,6 @@ export class ExerciseComponent implements OnInit {
   }
   addValue(): void {
     this.value += 100 / 3
-    console.log(this.exerciseForm)
   }
 
   minusValue(): void {
@@ -126,6 +128,7 @@ export class ExerciseComponent implements OnInit {
   getCategories(): void {
     this.categoryService.getCategories().subscribe((response: any) => {
       this.categories = response
+      console.log(response)
     }, (error: any) => {
       if (error.error?.message) {
         this.responseMessage = error.error?.message
@@ -147,9 +150,7 @@ export class ExerciseComponent implements OnInit {
   }
 
   getArray(form1: any, form2: any) {
-    console.log(this.selectedValue)
-    console.log(this.exerciseForm)
-    console.log(this.exerciseDetailsForm)
+
 
     const dataSource = []
     const obj = Object.assign({}, form1, form2)
@@ -169,7 +170,7 @@ export class ExerciseComponent implements OnInit {
     var data = {
       name: formData.name,
       description: formData.description,
-      categoryId: formData.categoryId,
+      category_id: formData.category_id,
 
       video_url: formData.video_url,
 
@@ -206,15 +207,18 @@ export class ExerciseComponent implements OnInit {
 
   edit(): void {
 
+
+
     var formData = this.exerciseForm.value;
     console.log(formData)
     var detailsFormData = this.exerciseDetailsForm.value
     console.log(detailsFormData)
+
     var data = {
       id: this.dialogData.values.id,
       name: formData.name,
       description: formData.description,
-      categoryId: formData.categoryId,
+      category_id: formData.category_id,
 
       video_url: formData.video_url,
 

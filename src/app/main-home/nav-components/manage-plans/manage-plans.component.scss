@@ -1,5 +1,5 @@
-app-manage-exercise {
-    .manage-exercise {
+app-manage-plans {
+    .manage-plans {
         padding: 100px 0;
 
         display: flex;
@@ -58,9 +58,7 @@ app-manage-exercise {
             }
 
 
-            .video_url-td {
-                color: #004d40;
-            }
+
 
             .action-td {
                 display: flex;
@@ -74,6 +72,7 @@ app-manage-exercise {
             .action-th {
                 text-align: center;
             }
+
         }
 
     }

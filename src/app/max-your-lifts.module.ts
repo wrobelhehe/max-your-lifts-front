@@ -22,12 +22,14 @@ import { CategoryComponent } from './dialog/category/category.component';
 import { ManageExerciseComponent } from './main-home/nav-components/manage-exercise/manage-exercise.component';
 import { ExerciseComponent } from './dialog/exercise/exercise.component';
 import { ExerciseCategoryPipe } from './dialog/exercise/exerciseCategory.pipe';
+import { ManagePlansComponent } from './main-home/nav-components/manage-plans/manage-plans.component';
+import { PlansComponent } from './dialog/plans/plans.component';
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, FooterPlansComponent, MainHomeComponent, ConfirmComponent, CategoryComponent, HeaderComponent, FooterComponent, MidNavComponent, HeaderNavComponent, SignupComponent, ForgotPasswordComponent, LoginComponent, HeaderPlansComponent, ChangePasswordComponent, ManageCategoryComponent, ManageExerciseComponent, ExerciseComponent, ExerciseCategoryPipe],
+  declarations: [HomeComponent, FooterPlansComponent, MainHomeComponent, ConfirmComponent, CategoryComponent, HeaderComponent, FooterComponent, MidNavComponent, HeaderNavComponent, SignupComponent, ForgotPasswordComponent, LoginComponent, HeaderPlansComponent, ChangePasswordComponent, ManageCategoryComponent, ManageExerciseComponent, ExerciseComponent, ExerciseCategoryPipe, ManagePlansComponent, PlansComponent],
   imports: [
     CommonModule,
     MaterialModule,

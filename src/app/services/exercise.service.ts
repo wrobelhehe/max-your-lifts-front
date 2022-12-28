@@ -34,9 +34,15 @@ export class ExerciseService {
     })
   }
 
+  getById(id: any): Observable<any> {
+    return this.httpClient.get(this.url + '/exercise/getById/' + id, {
+      headers: new HttpHeaders().set("Content-Type", "application/json")
+    })
+  }
+
 
   deleteExercise(id: any): Observable<any> {
-    return this.httpClient.patch(this.url + '/exercise/delete/' + id, {
+    return this.httpClient.delete(this.url + '/exercise/delete/' + id, {
       headers: new HttpHeaders().set("Content-Type", "application/json")
     })
   }

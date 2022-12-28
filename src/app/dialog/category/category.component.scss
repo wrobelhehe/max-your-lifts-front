@@ -1,48 +1,50 @@
-.form-column {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+app-category {
+    .form-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
 
-mat-toolbar-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.5rem;
-}
+    mat-toolbar-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.5rem;
+    }
 
-mat-form-field {
-    width: 100%;
-    padding: 20px;
-}
+    mat-form-field {
+        width: 100%;
+        padding: 20px;
+    }
 
-mat-dialog-actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
+    mat-dialog-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
 
-.icon {
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    .icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
 
-}
+    }
 
-.icon:hover {
-    color: black;
-    transition: all 0.2s;
-    background-color: #003a30;
+    .icon:hover {
+        color: black;
+        transition: all 0.2s;
+        background-color: #003a30;
 
+    }
 }

@@ -14,23 +14,27 @@
         </mat-form-field>
     </mat-card>
     <div class="responsive-table">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+            class="mat-elevation-z8">
             <ng-container matColumnDef="name">
-                <th class="name-th" mat-header-cell *matHeaderCellDef>Name</th>
+                <th class="name-th" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by name">Name</th>
                 <td class="name-td td" mat-cell *matCellDef="let element">{{element.name}}</td>
             </ng-container>
             <ng-container matColumnDef="category_name">
-                <th class="category_name-th" mat-header-cell *matHeaderCellDef>Category</th>
+                <th class="category_name-th" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by category">Category</th>
                 <td class="category_name-td td" mat-cell *matCellDef="let element">
                     {{element.category_name}}</td>
             </ng-container>
             <ng-container matColumnDef="description">
-                <th class="description-th" mat-header-cell *matHeaderCellDef>Description</th>
+                <th class="description-th" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by description">Description</th>
                 <td class="description-td td" mat-cell *matCellDef="let element">
                     {{element.description}}</td>
             </ng-container>
             <ng-container matColumnDef="video_url">
-                <th class="video_url-th center" mat-header-cell *matHeaderCellDef>Video</th>
+                <th class="video_url-th center" mat-header-cell mat-sort-header *matHeaderCellDef>Video</th>
                 <td class="video_url-td td center" mat-cell *matCellDef="let element"><button
                         (click)="openLink(element.video_url)" mat-icon-button
                         matTooltip="Movie"><mat-icon>movie</mat-icon></button>
@@ -38,19 +42,23 @@
             </ng-container>
 
             <ng-container matColumnDef="sets">
-                <th class="sets-th center" mat-header-cell *matHeaderCellDef>Sets</th>
+                <th class="sets-th center" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by sets">Sets</th>
                 <td class="sets-td td center" mat-cell *matCellDef="let element">{{element.sets}}</td>
             </ng-container>
             <ng-container matColumnDef="reps">
-                <th class="reps-th center" mat-header-cell *matHeaderCellDef>Reps</th>
+                <th class="reps-th center" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by reps">Reps</th>
                 <td class="reps-td td center" mat-cell *matCellDef="let element">{{element.reps}}</td>
             </ng-container>
             <ng-container matColumnDef="rpe">
-                <th class="rpe-th center" mat-header-cell *matHeaderCellDef>RPE</th>
+                <th class="rpe-th center" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by RPE">RPE</th>
                 <td class="rpe-td td center" mat-cell *matCellDef="let element">{{element.rpe}}</td>
             </ng-container>
             <ng-container matColumnDef="tempo">
-                <th class="tempo-th center" mat-header-cell *matHeaderCellDef>Tempo</th>
+                <th class="tempo-th center" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by tempo">Tempo</th>
                 <td class="tempo-td td center" mat-cell *matCellDef="let element">{{element.tempo}}</td>
             </ng-container>
             <ng-container matColumnDef="edit">
@@ -62,7 +70,7 @@
                     <button mat-icon-button color="primary" matTooltip="Delete" (click)="handleDeleteAction(element)">
                         <mat-icon>delete</mat-icon>
                     </button>
-                    <mat-slide-toggle (change)="onChange($event.checked,element.id)"
+                    <mat-slide-toggle (change)="statusChange($event.checked,element.id)"
                         matTooltip="Activate or Deactivate Exercise" [checked]="element.status"></mat-slide-toggle>
                 </td>
             </ng-container>
@@ -70,7 +78,7 @@
             <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
         </table>
         <br>
-        <mat-paginator [length]="dataSource.data.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        <mat-paginator [length]="dataSource?.data.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
             (page)="pageEvent = $event">
         </mat-paginator>
     </div>

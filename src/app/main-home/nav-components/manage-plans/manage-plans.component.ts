@@ -1,30 +1,29 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatTab } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { CategoryComponent } from 'src/app/dialog/category/category.component';
-import { CategoryService } from 'src/app/services/category.service';
+import { ExerciseService } from 'src/app/services/exercise.service';
+import { PlansService } from 'src/app/services/plans.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstants } from 'src/app/shared/global-constans';
 
 @Component({
-  selector: 'app-manage-category',
-  templateUrl: './manage-category.component.html',
-  styleUrls: ['./manage-category.component.scss']
+  selector: 'app-manage-plans',
+  templateUrl: './manage-plans.component.html',
+  styleUrls: ['./manage-plans.component.scss']
 })
-export class ManageCategoryComponent implements OnInit {
+export class ManagePlansComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
 
-  displayedColumns: string[] = ['name', 'edit'];
-  dataSource: any;
+  displayedColumns: any[] = ['plan_name', 'plan_description', 'squat', 'bench', 'deadlift', 'edit'];
+  dataSource: any
   responseMessage: any;
 
 
@@ -32,28 +31,30 @@ export class ManageCategoryComponent implements OnInit {
   pageSize = this.pageSizeOptions[0];
   pageEvent: PageEvent;
 
+  allPlans: any
+
+
 
   constructor(private ngxService: NgxUiLoaderService,
     private _liveAnnouncer: LiveAnnouncer,
-
     private dialog: MatDialog,
     private snackbarService: SnackbarService,
-    private categoryService: CategoryService,
+    private planService: PlansService,
     private router: Router) {
     this.pageEvent = { pageIndex: 0, pageSize: 5, length: 0 };
     this.sort = new MatSort();
 
-
   }
-
 
   ngOnInit(): void {
     this.ngxService.start()
     this.tableData()
-  }
 
+
+  }
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    console.log(this.dataSource)
   }
 
   announceSortChange(sortState: Sort) {
@@ -68,12 +69,23 @@ export class ManageCategoryComponent implements OnInit {
     }
   }
 
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value
+    this.dataSource.filter = filterValue.trim().toLowerCase()
+  }
+
+
   tableData(): void {
-    this.categoryService.getCategories().subscribe((response: any) => {
+    const dialogConfig = new MatDialogConfig();
+
+    this.planService.getPlans().subscribe((response: any) => {
+      console.log(response)
       this.ngxService.stop()
       this.dataSource = new MatTableDataSource(response)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
+      console.log(this.dataSource)
 
 
     }, (error: any) => {
@@ -85,43 +97,6 @@ export class ManageCategoryComponent implements OnInit {
         this.responseMessage = GlobalConstants.genericError
       }
       this.snackbarService.openToast(this.responseMessage, GlobalConstants.error)
-    })
-  }
-
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value
-    this.dataSource.filter = filterValue.trim().toLowerCase()
-  }
-
-  handleAddAction() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {
-      action: "Add"
-    }
-    dialogConfig.width = "650px"
-    const dialogRef = this.dialog.open(CategoryComponent, dialogConfig)
-    this.router.events.subscribe(() => {
-      dialogRef.close()
-    })
-    const sub = dialogRef.componentInstance.onAddCategory.subscribe((response) => {
-      this.tableData()
-    })
-  }
-
-  handleEditAction(value: any) {
-
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {
-      action: "Edit",
-      values: value
-    }
-    dialogConfig.width = "650px"
-    const dialogRef = this.dialog.open(CategoryComponent, dialogConfig)
-    this.router.events.subscribe(() => {
-      dialogRef.close()
-    })
-    const sub = dialogRef.componentInstance.onEditCategory.subscribe((response) => {
-      this.tableData()
     })
   }
 

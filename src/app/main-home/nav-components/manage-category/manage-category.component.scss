@@ -17,7 +17,7 @@ app-manage-category {
             justify-content: space-between;
             align-items: center;
             flex-direction: row;
-            width: 70%;
+            width: 95%;
 
             h1 {
                 padding: 0 16px;
@@ -41,7 +41,7 @@ app-manage-category {
         }
 
         .filter-card {
-            width: 70%;
+            width: 95%;
 
             mat-form-field {
                 width: 100%;
@@ -51,7 +51,7 @@ app-manage-category {
         }
 
         .responsive-table {
-            width: 70%;
+            width: 95%;
 
             .td {
                 min-height: 80px;

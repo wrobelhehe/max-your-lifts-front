@@ -1,0 +1,69 @@
+<div class="manage-plans">
+    <mat-card class="header-card">
+        <h1>Manage Plans</h1>
+        <div class="add-cat">
+            <span class="add">Generate Plan</span>
+            <button mat-fab color="primary" class="float-right"><mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <mat-card class="filter-card">
+        <mat-form-field appearance="fill">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" #input>
+        </mat-form-field>
+    </mat-card>
+    <div class="responsive-table">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+            class="mat-elevation-z8">
+            <ng-container matColumnDef="plan_name">
+                <th class="plan_name-th" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by plan_name">Name</th>
+                <td class="plan_name-td td" mat-cell *matCellDef="let element">{{element.plan_name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="plan_description">
+                <th class="plan_description-th" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by plan_description">Description</th>
+                <td class="plan_description-td td" mat-cell *matCellDef="let element">
+                    {{element.plan_description}}</td>
+            </ng-container>
+
+
+
+            <ng-container matColumnDef="squat">
+                <th class="squat-th center" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by squat">Squat</th>
+                <td class="squat-td td center" mat-cell *matCellDef="let element">{{element.squat}}</td>
+            </ng-container>
+            <ng-container matColumnDef="bench">
+                <th class="bench-th center" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by bench">Bench press</th>
+                <td class="bench-td td center" mat-cell *matCellDef="let element">{{element.bench}}</td>
+            </ng-container>
+            <ng-container matColumnDef="deadlift">
+                <th class="deadlift-th center" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by deadlift">Deadlift</th>
+                <td class="deadlift-td td center" mat-cell *matCellDef="let element">{{element.deadlift}}</td>
+            </ng-container>
+            <ng-container matColumnDef="edit">
+                <th class="action-th center" mat-header-cell *matHeaderCellDef>Action</th>
+                <td class="action-td td" mat-cell *matCellDef="let element">
+
+                    <button mat-icon-button color="primary" matTooltip="Delete">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+            <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+        </table>
+        <br>
+        <mat-paginator [length]="dataSource?.data.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+            (page)="pageEvent = $event">
+        </mat-paginator>
+    </div>
+
+
+</div>

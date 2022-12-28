@@ -7,6 +7,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponentsRoutes } from './nav-components.routing';
 import { MaterialModule } from 'src/app/shared/material.module';
+import { ManagePlansComponent } from './manage-plans/manage-plans.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
     CdkTableModule
   ],
   providers: [],
-  declarations: []
+  declarations: [
+  ]
 })
 export class NavComponentsModule { }
