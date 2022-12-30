@@ -1,1 +1,197 @@
-<p>plans works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span class="title-center">{{dialogData.action}} Plan</span>
+        <span mat-dialog-close class="icon"><i class="ri-close-line"></i></span>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+    <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
+    <mat-horizontal-stepper [labelPosition]="'bottom'" #stepper [linear]="false">
+        <mat-step [stepControl]="planUserForm" errorMessage="Error">
+
+            <form class="planUserForm" [formGroup]="planUserForm">
+                <ng-template matStepLabel>Fill user informations</ng-template>
+
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Gender</mat-label>
+                        <mat-select formControlName="sex" required>
+                            <mat-option *ngFor="let sex of genders" [value]="sex.code">{{sex.name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="planUserForm.controls.sex.touched && planUserForm.controls.sex.invalid">
+                            <span *ngIf="planUserForm.controls.sex.errors.required">The field is
+                                mandatory</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Age</mat-label>
+                        <input [min]="1" [max]="100" type="number" matInput formControlName="age" required>
+                        <mat-error *ngIf="planUserForm.controls.age.touched && planUserForm.controls.age.invalid">
+                            <span *ngIf="planUserForm.controls.age.errors.required">The field is
+                                mandatory</span>
+                            <span *ngIf="planUserForm.controls.age.errors.min">Please enter value between 1 and
+                                100</span>
+                            <span *ngIf="planUserForm.controls.age.errors.max">Please enter value between 1 and
+                                100</span>
+
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Body weight</mat-label>
+                        <input [min]="20" [max]="700" type="number" matInput formControlName="weight" required>
+                        <mat-error *ngIf="planUserForm.controls.weight.touched && planUserForm.controls.weight.invalid">
+                            <span *ngIf="planUserForm.controls.weight.errors.required">The field is
+                                mandatory</span>
+                            <span *ngIf="planUserForm.controls.weight.errors.min">Please enter value between 20 and
+                                700</span>
+                            <span *ngIf="planUserForm.controls.weight.errors.max">Please enter value between 20 and
+                                700</span>
+
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Equipment</mat-label>
+                        <mat-select formControlName="equipment" required>
+                            <mat-option *ngFor="let eq of equipment" [value]="eq">{{eq}}</mat-option>
+                        </mat-select>
+                        <mat-error
+                            *ngIf="planUserForm.controls.equipment.touched && planUserForm.controls.equipment.invalid">
+                            <span *ngIf="planUserForm.controls.equipment.errors.required">The field is
+                                mandatory</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Tested</mat-label>
+                        <mat-select formControlName="tested" required>
+                            <mat-option *ngFor="let test of tested" [value]="test.code">{{test.name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="planUserForm.controls.tested.touched && planUserForm.controls.tested.invalid">
+                            <span *ngIf="planUserForm.controls.tested.errors.required">The field is
+                                mandatory</span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Squat</mat-label>
+                        <input [min]="1" [max]="700" type="number" matInput formControlName="squat" required>
+                        <mat-error *ngIf="planUserForm.controls.squat.touched && planUserForm.controls.squat.invalid">
+                            <span *ngIf="planUserForm.controls.squat.errors.required">The field is
+                                mandatory</span>
+                            <span *ngIf="planUserForm.controls.squat.errors.min">Please enter value between 1 and
+                                700</span>
+                            <span *ngIf="planUserForm.controls.squat.errors.max">Please enter value between 1 and
+                                700</span>
+
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Bench</mat-label>
+                        <input [min]="1" [max]="700" type="number" matInput formControlName="bench" required>
+                        <mat-error *ngIf="planUserForm.controls.bench.touched && planUserForm.controls.bench.invalid">
+                            <span *ngIf="planUserForm.controls.bench.errors.required">The field is
+                                mandatory</span>
+                            <span *ngIf="planUserForm.controls.bench.errors.min">Please enter value between 1 and
+                                700</span>
+                            <span *ngIf="planUserForm.controls.bench.errors.max">Please enter value between 1 and
+                                700</span>
+
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Deadlift</mat-label>
+                        <input [min]="1" [max]="700" type="number" matInput formControlName="deadlift" required>
+                        <mat-error
+                            *ngIf="planUserForm.controls.deadlift.touched && planUserForm.controls.deadlift.invalid">
+                            <span *ngIf="planUserForm.controls.deadlift.errors.required">The field is
+                                mandatory</span>
+                            <span *ngIf="planUserForm.controls.deadlift.errors.min">Please enter value between 1 and
+                                700</span>
+                            <span *ngIf="planUserForm.controls.deadlift.errors.max">Please enter value between 1 and
+                                700</span>
+
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-column">
+                    <div class="button-container">
+                        <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+                        <button mat-raised-button color="primary" matStepperNext (click)="addValue()"
+                            [disabled]="!(planUserForm.valid  && planUserForm.valid)">Next</button>
+                    </div>
+                </div>
+            </form>
+
+        </mat-step>
+        <mat-step [stepControl]="planInfoForm" label="Fill plan details">
+            <form class="exerciseDetailsForm" [formGroup]="planInfoForm">
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Plan name</mat-label>
+                        <input maxlength="100" type="text" matInput formControlName="planName" required>
+                        <mat-error
+                            *ngIf="planInfoForm.controls.planName.touched && planInfoForm.controls.planName.invalid">
+                            <span *ngIf="planInfoForm.controls.planName.errors.required">The field is
+                                mandatory</span>
+
+
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-column">
+
+                    <mat-form-field appearance="fill" class="form-field">
+                        <mat-label>Plan description</mat-label>
+                        <input maxlength="1000" type="text" matInput formControlName="planDescription" required>
+                        <mat-error
+                            *ngIf="planInfoForm.controls.planDescription.touched && planInfoForm.controls.planDescription.invalid">
+                            <span *ngIf="planInfoForm.controls.planDescription.errors.required">The field is
+                                mandatory</span>
+
+
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-column">
+                    <div class="button-container">
+                        <button mat-raised-button color="primary" matStepperPrevious
+                            (click)="minusValue()">Back</button>
+                        <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+                            [disabled]="!(planUserForm.valid  && planInfoForm.valid) ">{{action}}</button>
+                    </div>
+                </div>
+            </form>
+
+        </mat-step>
+
+    </mat-horizontal-stepper>
+</mat-dialog-content>

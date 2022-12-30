@@ -38,4 +38,10 @@ export class PlansService {
     })
   }
 
+  getWorstLift(data: any): Observable<any> {
+    return this.httpClient.post(this.url + "/powerlifting/worstLift/", data, {
+      headers: new HttpHeaders().set("Content-Type", "application/json")
+    })
+  }
+
 }

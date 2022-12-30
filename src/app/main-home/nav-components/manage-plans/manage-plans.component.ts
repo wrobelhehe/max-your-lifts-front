@@ -6,6 +6,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { PlansComponent } from 'src/app/dialog/plans/plans.component';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { PlansService } from 'src/app/services/plans.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -97,6 +98,21 @@ export class ManagePlansComponent implements AfterViewInit, OnInit {
         this.responseMessage = GlobalConstants.genericError
       }
       this.snackbarService.openToast(this.responseMessage, GlobalConstants.error)
+    })
+  }
+
+  handleAddAction(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      action: "Add"
+    }
+    dialogConfig.width = "1050px"
+    const dialogRef = this.dialog.open(PlansComponent, dialogConfig)
+    this.router.events.subscribe(() => {
+      dialogRef.close()
+    })
+    const sub = dialogRef.componentInstance.onAddPlan.subscribe((response) => {
+      this.tableData()
     })
   }
 
