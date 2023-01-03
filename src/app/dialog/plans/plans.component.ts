@@ -2,6 +2,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CategoryService } from 'src/app/services/category.service';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { PlansService } from 'src/app/services/plans.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -36,9 +37,11 @@ export class PlansComponent implements OnInit {
 
   workouts: any[] = []
 
-  worstLift: any
+  
 
   exercises: any[] = []
+
+  categories: any[] = []
 
   genders: any[] = [{ code: "F", name: "Female" },
   { code: "M", name: "Male" }]
@@ -49,12 +52,14 @@ export class PlansComponent implements OnInit {
   equipment: any[] = ['Raw', 'Wraps']
 
   value: number = 100 / 3
+  worstLift: any;
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any,
     private formBuilder: FormBuilder,
     private planService: PlansService,
     private dialogRef: MatDialogRef<PlansComponent>,
+    private categoryService: CategoryService,
     private snackbarService: SnackbarService,
     private exerciseService: ExerciseService) {
 
@@ -85,35 +90,35 @@ export class PlansComponent implements OnInit {
   handleSubmit(): void {
     console.log(this.planUserForm.value)
     console.log(this.planInfoForm.value)
-
-
     // this.add()
-
   }
 
 
-  createWorkout(): void {
-    this.workouts = [{
-      name: "Monday",
-      description: "A full-body workout",
-      exerciseIds: [1, 2, 3, 4, 5, 6]
-    },
-    {
-      name: "Tuesday",
-      description: "A lower body workout",
-      exerciseIds: [7, 8, 9, 10]
-    },
-    {
-      name: "Thursday",
-      description: "An upper body workout",
-      exerciseIds: [11, 12, 13, 14]
-    },
-    {
-      name: "Friday",
-      description: "A core workout",
-      exerciseIds: [15, 16, 17, 18]
-    }]
+
+
+
+
+  generateWorkouts( worstLift: string) {
+this.categoryService.getCategories().subscribe((response: any)=> {this.categories = response})
+console.log(this.categories)      
+    
   }
+
+  private getExercisesByCategory(categoryId: number) {
+    return this.exerciseService.getByCategory(categoryId)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
   defaultValue(): void {
     this.value = 100 / 3

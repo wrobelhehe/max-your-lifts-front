@@ -41,6 +41,13 @@ export class ExerciseService {
   }
 
 
+  getByCategory(id: any): Observable<any> {
+    return this.httpClient.get(this.url + '/exercise/getByCategory/' + id, {
+      headers: new HttpHeaders().set("Content-Type", "application/json")
+    })
+  }
+
+
   deleteExercise(id: any): Observable<any> {
     return this.httpClient.delete(this.url + '/exercise/delete/' + id, {
       headers: new HttpHeaders().set("Content-Type", "application/json")
