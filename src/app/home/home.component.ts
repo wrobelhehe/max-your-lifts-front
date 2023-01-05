@@ -71,12 +71,10 @@ export class HomeComponent implements OnInit {
       this.userService.checkToken().subscribe((res: any) => {
         this.router.navigate(['/max-your-lifts/plans'])
       }, (error: any) => {
-        console.log(error)
       })
     }
   }
   signUp() {
-    console.log(window.innerWidth)
     const dialogConfig = new MatDialogConfig()
     if (window.innerWidth >= 768) {
       dialogConfig.width = '650px';

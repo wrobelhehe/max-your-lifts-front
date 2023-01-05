@@ -5,7 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ExerciseCategoryPipe implements PipeTransform {
     transform(values: number[]): string {
-        console.log('Values:', values);
         if (!values || values.length === 0) {
             return '';
         }

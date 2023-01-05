@@ -2,6 +2,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/services/category.service';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { PlansService } from 'src/app/services/plans.service';
@@ -37,7 +38,25 @@ export class PlansComponent implements OnInit {
 
   workouts: any[] = []
 
-  
+  userData: any
+
+  workoutData: any = {
+    name: '',
+    description: '',
+    exercise: []
+  }
+
+  allData: any
+
+
+  squatExercises: any[] = []
+  benchExercises: any[] = []
+  deadliftExercises: any[] = []
+  rowExercises: any[] = []
+  exercisesWorkout: any[] = []
+  worstExercises: any[] = []
+
+
 
   exercises: any[] = []
 
@@ -52,8 +71,8 @@ export class PlansComponent implements OnInit {
   equipment: any[] = ['Raw', 'Wraps']
 
   value: number = 100 / 3
-  worstLift: any;
-
+  worstLift: any
+  // worstLiftExercises: Observable<any>
 
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any,
     private formBuilder: FormBuilder,
@@ -62,6 +81,32 @@ export class PlansComponent implements OnInit {
     private categoryService: CategoryService,
     private snackbarService: SnackbarService,
     private exerciseService: ExerciseService) {
+    this.exerciseService.getExercises().subscribe((response: any) => {
+      this.exercises = response
+    })
+    this.exerciseService.getByCategory(1).subscribe((response: any) => {
+      this.benchExercises = response
+      console.log(response)
+    })
+    this.exerciseService.getByCategory(2).subscribe((response: any) => {
+      this.squatExercises = response
+      console.log(response)
+
+    })
+
+    this.exerciseService.getByCategory(3).subscribe((response: any) => {
+      this.deadliftExercises = response
+      console.log(response)
+
+    })
+
+    this.exerciseService.getByCategory(4).subscribe((response: any) => {
+      this.rowExercises = response
+      console.log(response)
+
+    })
+
+
 
   }
   ngOnInit(): void {
@@ -87,45 +132,103 @@ export class PlansComponent implements OnInit {
 
   }
 
-  handleSubmit(): void {
-    console.log(this.planUserForm.value)
-    console.log(this.planInfoForm.value)
-    // this.add()
+  // handleSubmit(): void {
+
+  //   this.add()
+  // }
+
+
+
+
+
+  handleSubmit(worstLift: number) {
+    this.exerciseService.getByCategory(worstLift).subscribe((response: any) => {
+      this.worstExercises = response
+      this.workouts = this.selectRandomObjects(this.squatExercises, this.benchExercises, this.deadliftExercises, this.rowExercises, this.worstExercises)
+
+      const data = {
+        planName: this.planInfoForm.value.planName,
+        planDescription: this.planInfoForm.value.planName,
+        workouts: this.workouts
+
+        ,
+        sex: this.planUserForm.value.sex,
+        age: this.planUserForm.value.age,
+        equipment: this.planUserForm.value.equipment,
+        weight: this.planUserForm.value.weight,
+        squat: this.planUserForm.value.squat,
+        bench: this.planUserForm.value.bench,
+        deadlift: this.planUserForm.value.deadlift,
+        tested: this.planUserForm.value.tested
+      };
+
+      console.log(data)
+
+      this.planService.addPlan(data).subscribe((response: any) => {
+        this.dialogRef.close();
+        this.onAddPlan.emit();
+        this.responseMessage = response.message;
+        this.snackbarService.openToast(this.responseMessage, 'success')
+      }, (error: any) => {
+
+        this.dialogRef.close()
+        if (error.error?.message) {
+          this.responseMessage = error.error?.message
+        } else {
+          this.responseMessage = GlobalConstants.genericError
+        }
+        this.snackbarService.openToast(this.responseMessage, GlobalConstants.error)
+      })
+
+    })
+
+
   }
 
+  private selectRandomObjects(array1: any[], array2: any[], array3: any[], array4: any[], array5: any[]) {
+    const workouts = [];  // array to store the workout objects
 
+    // create copies of the input arrays to avoid mutating the original arrays
+    const array1Copy = [...array1];
+    const array2Copy = [...array2];
+    const array3Copy = [...array3];
+    const array4Copy = [...array4];
+    const array5Copy = [...array5];
 
+    const arrays = [array1Copy, array2Copy, array3Copy, array4Copy, array5Copy];  // array of the copy arrays
 
+    for (let i = 0; i < 4; i++) {  // loop 4 times to create 4 workouts
+      const output: any[] = [];  // create a new output array for each iteration
 
+      for (const array of arrays) {  // iterate through the arrays
+        if (array.length > 0) {
+          let object;
+          do {
+            // select a random object from the array
+            const index = Math.floor(Math.random() * array.length);
+            object = array[index];
+          } while (output.includes(object.id));  // make sure the object has not been added to the output array
+          output.push(object.id);  // add the object's ID to the output array
+          array.splice(array.indexOf(object), 1);  // remove the object from the array
+        }
+      }
 
-  generateWorkouts( worstLift: string) {
-this.categoryService.getCategories().subscribe((response: any)=> {this.categories = response})
-console.log(this.categories)      
-    
+      workouts.push({  // add a new workout object to the workouts array
+        name: `Workout ${i + 1}`,  // give the workout a name
+        description: `This is workout number ${i + 1}`,  // give the workout a description
+        exerciseIds: output  // set the exerciseIds to the output array
+      });
+    }
+
+    return workouts;  // return the array of workout objects
   }
-
-  private getExercisesByCategory(categoryId: number) {
-    return this.exerciseService.getByCategory(categoryId)
-  }
-
-
-
-
-
-
-
-
-
-
-
-
 
   defaultValue(): void {
     this.value = 100 / 3
   }
   addValue(): void {
     this.value += 100 / 3
-    const data = {
+    this.userData = {
       sex: this.planUserForm.value.sex,
       age: this.planUserForm.value.age,
       equipment: this.planUserForm.value.equipment,
@@ -136,80 +239,19 @@ console.log(this.categories)
       tested: this.planUserForm.value.tested
     }
 
-    this.planService.getWorstLift(data).subscribe((response: any) => {
-      this.worstLift = response
-      console.log(response)
+    this.planService.getWorstLift(this.userData).subscribe((response: any) => {
+      this.worstLift = response.worstLift
+
     })
 
-    this.exerciseService.getExercises().subscribe((response: any) => {
-      this.exercises = response
-      console.log(response)
-    })
   }
 
   minusValue(): void {
     this.value -= 100 / 3
-    console.log(this.planInfoForm.value)
   }
 
 
-  add(): void {
 
 
-
-    const data = {
-      planName: this.planInfoForm.value.planName,
-      planDescription: this.planInfoForm.value.planName,
-      workouts: this.workouts
-      // {
-      //   name: "Workout 1",
-      //   description: "A full-body workout",
-      //   exerciseIds: [1, 2, 3, 4, 5, 6]
-      // },
-      // {
-      //   name: "Workout 2",
-      //   description: "A lower body workout",
-      //   exerciseIds: [7, 8, 9, 10]
-      // },
-      // {
-      //   name: "Workout 3",
-      //   description: "An upper body workout",
-      //   exerciseIds: [11, 12, 13, 14]
-      // },
-      // {
-      //   name: "Workout 4",
-      //   description: "A core workout",
-      //   exerciseIds: [15, 16, 17, 18]
-      // }
-      ,
-      sex: this.planUserForm.value.sex,
-      age: this.planUserForm.value.age,
-      equipment: this.planUserForm.value.equipment,
-      weight: this.planUserForm.value.weight,
-      squat: this.planUserForm.value.squat,
-      bench: this.planUserForm.value.bench,
-      deadlift: this.planUserForm.value.deadlift,
-      tested: this.planUserForm.value.tested
-    };
-
-
-
-    this.planService.addPlan(data).subscribe((response: any) => {
-      this.dialogRef.close();
-      this.onAddPlan.emit();
-      this.responseMessage = response.message;
-      this.snackbarService.openToast(this.responseMessage, 'success')
-    }, (error: any) => {
-
-      this.dialogRef.close()
-      if (error.error?.message) {
-        console.log(this.responseMessage)
-        this.responseMessage = error.error?.message
-      } else {
-        this.responseMessage = GlobalConstants.genericError
-      }
-      this.snackbarService.openToast(this.responseMessage, GlobalConstants.error)
-    })
-  }
 
 }

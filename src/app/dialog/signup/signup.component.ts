@@ -61,7 +61,6 @@ export class SignupComponent implements OnInit {
       this.router.navigate(['/'])
 
     }, (error) => {
-      console.log(error)
 
       this.ngxService.stop();
       if (error.error?.messagge) {

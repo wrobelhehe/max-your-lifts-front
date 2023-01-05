@@ -6,7 +6,9 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ConfirmComponent } from 'src/app/dialog/confirm/confirm.component';
 import { PlansComponent } from 'src/app/dialog/plans/plans.component';
+import { ViewPlanComponent } from 'src/app/dialog/view-plan/view-plan.component';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { PlansService } from 'src/app/services/plans.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -54,8 +56,7 @@ export class ManagePlansComponent implements AfterViewInit, OnInit {
 
   }
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    console.log(this.dataSource)
+    // this.dataSource.sort = this.sort;
   }
 
   announceSortChange(sortState: Sort) {
@@ -80,13 +81,11 @@ export class ManagePlansComponent implements AfterViewInit, OnInit {
     const dialogConfig = new MatDialogConfig();
 
     this.planService.getPlans().subscribe((response: any) => {
-      console.log(response)
       this.ngxService.stop()
       this.dataSource = new MatTableDataSource(response)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
 
-      console.log(this.dataSource)
 
 
     }, (error: any) => {
@@ -115,5 +114,54 @@ export class ManagePlansComponent implements AfterViewInit, OnInit {
       this.tableData()
     })
   }
+
+  handleDeleteAction(element: any): void {
+    const dialogConfig = new MatDialogConfig()
+    dialogConfig.data = {
+      message: 'delete plan: ' + element.plan_name
+    }
+    const dialogRef = this.dialog.open(ConfirmComponent, dialogConfig)
+    const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response) => {
+      this.ngxService.start()
+      console.log(element)
+      this.deletePlan(element.plan_id)
+      dialogRef.close()
+    })
+  }
+
+  deletePlan(id: any): void {
+    this.planService.deletePlan(id).subscribe((response: any) => {
+      this.ngxService.stop()
+      this.tableData()
+      this.responseMessage = response?.message;
+      this.snackbarService.openToast(this.responseMessage, "success")
+    }, (error: any) => {
+      this.ngxService.stop()
+      if (error.error?.message) {
+        this.responseMessage = error.error?.message
+      } else {
+        this.responseMessage = GlobalConstants.genericError
+      }
+      this.snackbarService.openToast(this.responseMessage, GlobalConstants.error)
+    })
+  }
+
+
+
+
+
+  handleViewAction(element: any): void {
+    const dialogConfig = new MatDialogConfig()
+    dialogConfig.data = {
+      data: element
+    }
+    const dialogRef = this.dialog.open(ViewPlanComponent, dialogConfig)
+
+    this.router.events.subscribe(() => {
+      dialogRef.close()
+    })
+  }
+
+
 
 }

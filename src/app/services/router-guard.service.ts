@@ -23,13 +23,11 @@ export class RouterGuardService {
 
 
     let expectedRoleArray: any = route.data;
-    console.log(expectedRoleArray)
     expectedRoleArray = expectedRoleArray.expectedRole
     const accessToken: any = this.authService.getAccessToken()
     var tokenPayLoad: any;
     try {
       tokenPayLoad = jwt_Decode(accessToken)
-      console.log(tokenPayLoad)
     }
     catch (err) {
       localStorage.clear()

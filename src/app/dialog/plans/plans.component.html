@@ -185,7 +185,7 @@
                     <div class="button-container">
                         <button mat-raised-button color="primary" matStepperPrevious
                             (click)="minusValue()">Back</button>
-                        <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+                        <button mat-raised-button color="primary" type="submit" (click)="handleSubmit(this.worstLift)"
                             [disabled]="!(planUserForm.valid  && planInfoForm.valid) ">{{action}}</button>
                     </div>
                 </div>

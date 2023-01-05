@@ -1,0 +1,149 @@
+<!-- <mat-dialog-content>
+    <table>
+    
+
+        <tr>
+            <td class="padding"><b>Plan name:</b> {{dataSource?.plan_name}}</td>
+        </tr>
+        <tr>
+            <td class="padding"><b>Plan description:</b> {{dataSource?.plan_description}}</td>
+        </tr>
+        <tr>
+            <td class="padding"><b>Body weight:</b> {{dataSource?.weight}}</td>
+        </tr>
+        <tr>
+            <td class="padding"><b>Benchpress:</b> {{dataSource?.bench}}</td>
+        </tr>
+        <tr>
+            <td class="padding"><b>Squat:</b> {{dataSource?.squat}}</td>
+        </tr>
+        <tr>
+            <td class="padding"><b>Deadlift:</b> {{dataSource?.deadlift}}</td>
+        </tr>
+
+
+        <tr *ngFor="let workout of dataSource?.workouts">
+            <td>
+                <div class="padding">
+                    <div>
+                        <h1>Workout name: </h1>{{workout.workout_name}}
+                    </div>
+
+
+                </div>
+
+                <div class="padding" *ngFor="let exercise of workout.exercises">{{exercise.name}}</div>
+
+            </td>
+
+        </tr>
+
+
+
+
+
+
+
+    </table>
+</mat-dialog-content> -->
+
+
+<div class="responsive-table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="plan_name">
+            <th class="plan_name-th" mat-header-cell *matHeaderCellDef>Plan name</th>
+            <td class="plan_name-td td" mat-cell *matCellDef="let element">{{element.plan_name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="plan_description">
+            <th class="plan_description-th" mat-header-cell *matHeaderCellDef>Plan description</th>
+            <td class="plan_description-td td" mat-cell *matCellDef="let element">
+                {{element.plan_description}}</td>
+        </ng-container>
+        <ng-container matColumnDef="weight">
+            <th class="weight-th" mat-header-cell *matHeaderCellDef>Body weight</th>
+            <td class="weight-td td" mat-cell *matCellDef="let element">
+                {{element.weight}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="squat">
+            <th class="squat-th center" mat-header-cell *matHeaderCellDef>Squat</th>
+            <td class="squat-td td center" mat-cell *matCellDef="let element">{{element.squat}}</td>
+        </ng-container>
+        <ng-container matColumnDef="bench">
+            <th class="bench-th center" mat-header-cell *matHeaderCellDef>Bench</th>
+            <td class="bench-td td center" mat-cell *matCellDef="let element">{{element.bench}}</td>
+        </ng-container>
+        <ng-container matColumnDef="deadlift">
+            <th class="deadlift-th center" mat-header-cell *matHeaderCellDef>Deadlift</th>
+            <td class="deadlift-td td center" mat-cell *matCellDef="let element">{{element.deadlift}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+        <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+    </table>
+
+    <table mat-table [dataSource]="workoutDataSource" class="mat-elevation-z9">
+        <ng-container matColumnDef="workout_name">
+            <th mat-header-cell *matHeaderCellDef>Workout Name</th>
+            <td mat-cell *matCellDef="let element">{{element.workout_name}}</td>
+
+
+
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Exercises</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="exercises" *ngFor="let exercise of element.exercises">{{exercise.name}}</div>
+
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="exercises" *ngFor="let exercise of element.exercises">{{exercise.description}}</div>
+
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="reps">
+            <th class="center" mat-header-cell *matHeaderCellDef>Reps</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="exercises center" *ngFor="let exercise of element.exercises">{{exercise.reps}}</div>
+
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="sets">
+            <th class="center" mat-header-cell *matHeaderCellDef>Sets</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="exercises center" *ngFor="let exercise of element.exercises">{{exercise.sets}}</div>
+
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="rpe">
+            <th class="center" mat-header-cell *matHeaderCellDef>Rpe</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="exercises center" *ngFor="let exercise of element.exercises">{{exercise.rpe}}</div>
+
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="tempo">
+            <th class="center" mat-header-cell *matHeaderCellDef>Tempo</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="exercises center" *ngFor="let exercise of element.exercises">{{exercise.tempo}}</div>
+
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="video_url">
+            <th class="center" mat-header-cell *matHeaderCellDef>Video</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="exercises center" *ngFor="let exercise of element.exercises"><button
+                        (click)="openLink(exercise.video_url)" mat-icon-button
+                        matTooltip="Movie"><mat-icon>movie</mat-icon></button></div>
+
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2; sticky:true"></tr>
+        <tr mat-row *matRowDef="let row;columns:displayedColumns2"></tr>
+    </table>
+
+</div>

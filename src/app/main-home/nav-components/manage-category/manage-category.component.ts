@@ -53,7 +53,7 @@ export class ManageCategoryComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
   }
 
   announceSortChange(sortState: Sort) {

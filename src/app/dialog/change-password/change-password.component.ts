@@ -59,7 +59,6 @@ export class ChangePasswordComponent implements OnInit {
       this.dialogRef.close()
       this.snackbarService.openToast(this.responseMessage, "success")
     }, (error) => {
-      console.log(error)
       this.ngxService.stop();
       if (error.error?.message) {
         this.responseMessage = error.error?.message

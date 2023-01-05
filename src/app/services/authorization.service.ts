@@ -62,7 +62,6 @@ export class AuthorizationService {
       this.router.navigate(["/"])
       return false
     } else {
-      console.log(this.isTokenExpired(this.getAccessToken()))
 
       if (this.isTokenExpired(this.getAccessToken())) {
         if (this.getRefreshToken()) {

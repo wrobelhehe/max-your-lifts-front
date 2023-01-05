@@ -1,0 +1,31 @@
+app-view-plan {
+    .responsive-table {
+        max-width: 80vw;
+        max-height: 80vh;
+    }
+
+    .mat-elevation-z8 {
+        padding-bottom: 2%;
+    }
+
+
+}
+
+.padding {
+    padding-bottom: 20px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    display: inline;
+}
+
+.exercises {
+    display: flex;
+    align-items: center;
+
+    padding: 10px 0;
+    min-height: 80px;
+}

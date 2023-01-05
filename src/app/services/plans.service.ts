@@ -27,8 +27,8 @@ export class PlansService {
     });
   }
 
-  generatePlan(data: any): Observable<any> {
-    return this.httpClient.post(this.url + "/plan/generatePlan/", data, {
+  generatePlan(id: any): Observable<any> {
+    return this.httpClient.get(this.url + "/plan/generatePlan/" + id, {
       headers: new HttpHeaders().set("Content-Type", "application/json")
     })
   }

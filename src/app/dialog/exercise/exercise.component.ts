@@ -80,8 +80,7 @@ export class ExerciseComponent implements OnInit {
       summary: [null, [Validators.required]]
     })
 
-    console.log(this.dialogData.values)
-    console.log(this.dialogData?.allCategories)
+
 
     if (this.dialogData.action === "Edit") {
       this.dialogAction = "Edit"
@@ -102,7 +101,6 @@ export class ExerciseComponent implements OnInit {
           tempo: this.dialogData.values.tempo,
         }
         this.exerciseForm.patchValue(arg1)
-        console.log(this.exerciseForm.value)
         this.exerciseDetailsForm.patchValue(arg2)
       })
 
@@ -128,7 +126,6 @@ export class ExerciseComponent implements OnInit {
   getCategories(): void {
     this.categoryService.getCategories().subscribe((response: any) => {
       this.categories = response
-      console.log(response)
     }, (error: any) => {
       if (error.error?.message) {
         this.responseMessage = error.error?.message
@@ -196,7 +193,6 @@ export class ExerciseComponent implements OnInit {
 
       this.dialogRef.close()
       if (error.error?.message) {
-        console.log(this.responseMessage)
         this.responseMessage = error.error?.message
       } else {
         this.responseMessage = GlobalConstants.genericError
@@ -210,9 +206,7 @@ export class ExerciseComponent implements OnInit {
 
 
     var formData = this.exerciseForm.value;
-    console.log(formData)
     var detailsFormData = this.exerciseDetailsForm.value
-    console.log(detailsFormData)
 
     var data = {
       id: this.dialogData.values.id,

@@ -74,7 +74,6 @@ export class CategoryComponent implements OnInit {
 
   edit(): void {
 
-    console.log(this.dialogData)
     var idData = this.dialogData.values.id
     var formData = this.categoryForm.value;
     var data = {
