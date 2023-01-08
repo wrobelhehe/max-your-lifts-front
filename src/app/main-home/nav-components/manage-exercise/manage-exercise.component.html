@@ -33,6 +33,18 @@
                 <td class="description-td td" mat-cell *matCellDef="let element">
                     {{element.description}}</td>
             </ng-container>
+            <!-- <ng-container matColumnDef="description">
+                <th class="description-th" mat-header-cell mat-sort-header *matHeaderCellDef
+                    sortActionDescription="Sort by description">Description</th>
+                <td class="description-td td" mat-cell *matCellDef="let element">
+                    <div *ngIf="element.description.length > 50; else fullDescription">
+                        {{element.description.substring(0, 50)}}...
+                        <mat-icon matTooltip="{{element.description}}" matTooltipClass="my-tooltip">info</mat-icon>
+                    </div>
+                    <ng-template #fullDescription>{{element.description}}</ng-template>
+                </td>
+            </ng-container> -->
+
             <ng-container matColumnDef="video_url">
                 <th class="video_url-th center" mat-header-cell mat-sort-header *matHeaderCellDef>Video</th>
                 <td class="video_url-td td center" mat-cell *matCellDef="let element"><button
@@ -61,17 +73,29 @@
                     sortActionDescription="Sort by tempo">Tempo</th>
                 <td class="tempo-td td center" mat-cell *matCellDef="let element">{{element.tempo}}</td>
             </ng-container>
+
             <ng-container matColumnDef="edit">
-                <th class="action-th center" mat-header-cell *matHeaderCellDef>Action</th>
-                <td class="action-td td" mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="primary" matTooltip="Edit" (click)="handleEditAction(element)">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button mat-icon-button color="primary" matTooltip="Delete" (click)="handleDeleteAction(element)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                    <mat-slide-toggle (change)="statusChange($event.checked,element.id)"
-                        matTooltip="Activate or Deactivate Exercise" [checked]="element.status"></mat-slide-toggle>
+                <th class="actions-th center" mat-header-cell *matHeaderCellDef>Actions</th>
+                <td class="actions-td td" mat-cell *matCellDef="let element">
+                    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+                    <mat-menu #menu="matMenu" class="mat-menu" xPosition="before">
+                        <div class="buttons">
+                            <button mat-icon-button color="primary" matTooltip="Edit"
+                                (click)="handleEditAction(element)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="primary" matTooltip="Delete"
+                                (click)="handleDeleteAction(element)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                            <mat-slide-toggle (change)="statusChange($event.checked,element.id)"
+                                matTooltip="Activate or Deactivate Exercise"
+                                [checked]="element.status"></mat-slide-toggle>
+                        </div>
+
+                    </mat-menu>
+
+
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>

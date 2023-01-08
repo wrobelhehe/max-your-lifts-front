@@ -27,7 +27,7 @@
 
                     <mat-form-field appearance="fill" class="form-field">
                         <mat-label>Description</mat-label>
-                        <textarea [minlength]="1" [maxlength]="100" matInput formControlName="description"
+                        <textarea [minlength]="1" [maxlength]="500" matInput formControlName="description"
                             required=""></textarea>
                         <mat-error
                             *ngIf="exerciseForm.controls.description.touched && exerciseForm.controls.description.invalid">

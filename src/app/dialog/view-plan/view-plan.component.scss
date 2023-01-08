@@ -1,31 +1,63 @@
 app-view-plan {
+
+
     .responsive-table {
         max-width: 80vw;
         max-height: 80vh;
+        font-size: 0.7em;
     }
 
     .mat-elevation-z8 {
         padding-bottom: 2%;
     }
 
+    .padding {
+        padding-bottom: 10px;
+    }
 
-}
+    h1,
+    h2,
+    h3,
+    h4 {
+        display: inline;
+    }
 
-.padding {
-    padding-bottom: 20px;
-}
+    .exercises {
 
-h1,
-h2,
-h3,
-h4 {
-    display: inline;
-}
+        display: flex;
+        align-items: center;
 
-.exercises {
-    display: flex;
-    align-items: center;
+        padding: 10px 0;
+        min-height: 80px;
+    }
 
-    padding: 10px 0;
-    min-height: 80px;
+    .icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        color: #004d40;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+    }
+
+    .icon:hover {
+        transition: all 0.2s;
+        color: #fff;
+
+        background-color: #004d40;
+
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
 }

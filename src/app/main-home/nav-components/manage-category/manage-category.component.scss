@@ -67,7 +67,14 @@ app-manage-category {
                 flex-direction: row;
                 align-items: center;
             }
+
+            mat-paginator {
+                background-color: #FAFAFA;
+            }
         }
 
     }
+
+
+
 }

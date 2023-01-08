@@ -54,10 +54,11 @@ app-manage-plans {
 
             .td {
                 min-height: 80px;
-                ;
             }
 
-
+            mat-paginator {
+                background-color: #FAFAFA;
+            }
 
 
             .action-td {

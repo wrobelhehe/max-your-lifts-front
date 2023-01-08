@@ -15,6 +15,8 @@ import { TokenInterceptorInterceptor } from './services/token-interceptor.interc
 
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -51,7 +53,11 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     MatSnackBarModule,
-    SharedModule
+    SharedModule,
+    DragDropModule
+
+
+
 
 
 

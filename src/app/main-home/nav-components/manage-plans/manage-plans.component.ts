@@ -25,6 +25,7 @@ export class ManagePlansComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
+
   displayedColumns: any[] = ['plan_name', 'plan_description', 'squat', 'bench', 'deadlift', 'edit'];
   dataSource: any
   responseMessage: any;
@@ -35,7 +36,6 @@ export class ManagePlansComponent implements AfterViewInit, OnInit {
   pageEvent: PageEvent;
 
   allPlans: any
-
 
 
   constructor(private ngxService: NgxUiLoaderService,

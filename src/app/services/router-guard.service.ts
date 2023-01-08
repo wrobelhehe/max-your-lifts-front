@@ -28,6 +28,7 @@ export class RouterGuardService {
     var tokenPayLoad: any;
     try {
       tokenPayLoad = jwt_Decode(accessToken)
+      console.log(tokenPayLoad)
     }
     catch (err) {
       localStorage.clear()

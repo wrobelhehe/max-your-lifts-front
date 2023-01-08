@@ -25,18 +25,23 @@ import { ExerciseCategoryPipe } from './dialog/exercise/exerciseCategory.pipe';
 import { ManagePlansComponent } from './main-home/nav-components/manage-plans/manage-plans.component';
 import { PlansComponent } from './dialog/plans/plans.component';
 import { ViewPlanComponent } from './dialog/view-plan/view-plan.component';
+import { VideoPlayerComponent } from './dialog/video-player/video-player.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { SafePipe } from './dialog/video-player/safe.pipe';
+
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, FooterPlansComponent, MainHomeComponent, ConfirmComponent, CategoryComponent, HeaderComponent, FooterComponent, MidNavComponent, HeaderNavComponent, SignupComponent, ForgotPasswordComponent, LoginComponent, HeaderPlansComponent, ChangePasswordComponent, ManageCategoryComponent, ManageExerciseComponent, ExerciseComponent, ExerciseCategoryPipe, ManagePlansComponent, PlansComponent, ViewPlanComponent],
+  declarations: [HomeComponent, FooterPlansComponent, MainHomeComponent, ConfirmComponent, CategoryComponent, HeaderComponent, FooterComponent, MidNavComponent, HeaderNavComponent, SignupComponent, ForgotPasswordComponent, LoginComponent, HeaderPlansComponent, ChangePasswordComponent, ManageCategoryComponent, ManageExerciseComponent, ExerciseComponent, ExerciseCategoryPipe, ManagePlansComponent, PlansComponent, ViewPlanComponent, VideoPlayerComponent, SafePipe],
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    YouTubePlayerModule
 
   ],
   providers: [{ provide: MenuItems, useClass: MenuItems }]

@@ -1,4 +1,6 @@
 app-manage-exercise {
+
+
     .manage-exercise {
         padding: 100px 0;
 
@@ -49,36 +51,36 @@ app-manage-exercise {
 
         }
 
+
+
         .responsive-table {
             width: 95%;
 
+
+
             .td {
-                min-height: 80px;
-                max-width: 500px;
+                height: 80px;
+
+
 
             }
 
 
-            .video_url-td {
-                color: #004d40;
-            }
 
-            .action-td {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: row;
-                flex-wrap: wrap;
 
-            }
 
-            .action-th {
-                text-align: center;
+
+
+
+            mat-paginator {
+                background-color: #FAFAFA;
             }
         }
 
     }
 
 
-
+    .buttons {
+        background-color: red;
+    }
 }

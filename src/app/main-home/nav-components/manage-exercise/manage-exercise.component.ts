@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ConfirmComponent } from 'src/app/dialog/confirm/confirm.component';
 import { ExerciseComponent } from 'src/app/dialog/exercise/exercise.component';
+import { VideoPlayerComponent } from 'src/app/dialog/video-player/video-player.component';
 import { CategoryService } from 'src/app/services/category.service';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -26,6 +27,8 @@ export class ManageExerciseComponent implements AfterViewInit {
   displayedColumns: any[] = ['name', 'description', 'category_name', 'video_url', 'sets', 'reps', 'rpe', 'tempo', 'edit'];
   dataSource: any
   responseMessage: any;
+
+  isExpanded = false;
 
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageSize = this.pageSizeOptions[0];
@@ -71,7 +74,13 @@ export class ManageExerciseComponent implements AfterViewInit {
 
 
   openLink(link: string): void {
-    window.open(link, '_blank');
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      link: link
+    }
+
+    this.dialog.open(VideoPlayerComponent, dialogConfig)
+
   }
 
   tableData(): void {
@@ -99,6 +108,12 @@ export class ManageExerciseComponent implements AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
   }
+
+  handleVideoEditor(): void {
+    this.dialog.open(VideoPlayerComponent)
+  }
+
+
 
   handleAddAction(): void {
     const dialogConfig = new MatDialogConfig();

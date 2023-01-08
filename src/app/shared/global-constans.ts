@@ -7,7 +7,7 @@ export class GlobalConstants {
 
     public static emailRegex: string = "[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}"
 
-    public static tempoRegex: string = "[1-9][1-9][1-9][1-9]"
+    public static tempoRegex: string = "[0-9][0-9][0-9][0-9]"
 
 
 
