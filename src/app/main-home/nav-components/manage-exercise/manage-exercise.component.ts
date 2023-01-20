@@ -87,8 +87,10 @@ export class ManageExerciseComponent implements AfterViewInit {
     this.exerciseService.getExercises().subscribe((response: any) => {
       this.ngxService.stop()
       this.dataSource = new MatTableDataSource(response)
+
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      console.log(this.dataSource)
 
 
 

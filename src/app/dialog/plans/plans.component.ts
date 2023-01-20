@@ -55,6 +55,7 @@ export class PlansComponent implements OnInit {
   rowExercises: any[] = []
   exercisesWorkout: any[] = []
   worstExercises: any[] = []
+  restExercises: any[] = []
 
 
 
@@ -66,13 +67,12 @@ export class PlansComponent implements OnInit {
   { code: "M", name: "Male" }]
 
   tested: any[] = [{ code: "Yes", name: "Yes" },
-  { code: "", name: "No" }]
+  { code: " ", name: "No" }]
 
   equipment: any[] = ['Raw', 'Wraps']
 
   value: number = 100 / 3
   worstLift: any
-  // worstLiftExercises: Observable<any>
 
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any,
     private formBuilder: FormBuilder,
@@ -82,27 +82,26 @@ export class PlansComponent implements OnInit {
     private snackbarService: SnackbarService,
     private exerciseService: ExerciseService) {
     this.exerciseService.getExercises().subscribe((response: any) => {
-      this.exercises = response
-    })
+      this.exercises = response;
+      this.restExercises = response.filter((exercise: any) => {
+        return exercise.category_id != 1 && exercise.category_id != 2 && exercise.category_id != 3 && exercise.category_id != 4;
+      });
+    });
     this.exerciseService.getByCategory(1).subscribe((response: any) => {
       this.benchExercises = response
-      console.log(response)
     })
     this.exerciseService.getByCategory(2).subscribe((response: any) => {
       this.squatExercises = response
-      console.log(response)
 
     })
 
     this.exerciseService.getByCategory(3).subscribe((response: any) => {
       this.deadliftExercises = response
-      console.log(response)
 
     })
 
     this.exerciseService.getByCategory(4).subscribe((response: any) => {
       this.rowExercises = response
-      console.log(response)
 
     })
 
@@ -132,19 +131,10 @@ export class PlansComponent implements OnInit {
 
   }
 
-  // handleSubmit(): void {
-
-  //   this.add()
-  // }
-
-
-
-
-
   handleSubmit(worstLift: number) {
     this.exerciseService.getByCategory(worstLift).subscribe((response: any) => {
       this.worstExercises = response
-      this.workouts = this.selectRandomObjects(this.squatExercises, this.benchExercises, this.deadliftExercises, this.rowExercises, this.worstExercises)
+      this.workouts = this.selectRandomObjects(this.squatExercises, this.benchExercises, this.deadliftExercises, this.rowExercises, this.worstExercises, this.restExercises)
 
       const data = {
         planName: this.planInfoForm.value.planName,
@@ -162,7 +152,7 @@ export class PlansComponent implements OnInit {
         tested: this.planUserForm.value.tested
       };
 
-      console.log(data)
+
 
       this.planService.addPlan(data).subscribe((response: any) => {
         this.dialogRef.close();
@@ -185,7 +175,7 @@ export class PlansComponent implements OnInit {
 
   }
 
-  private selectRandomObjects(array1: any[], array2: any[], array3: any[], array4: any[], array5: any[]) {
+  private selectRandomObjects(array1: any[], array2: any[], array3: any[], array4: any[], array5: any[], array6: any[]) {
     const workouts = [];  // array to store the workout objects
 
     // create copies of the input arrays to avoid mutating the original arrays
@@ -194,8 +184,9 @@ export class PlansComponent implements OnInit {
     const array3Copy = [...array3];
     const array4Copy = [...array4];
     const array5Copy = [...array5];
+    const array6Copy = [...array6];
 
-    const arrays = [array1Copy, array2Copy, array3Copy, array4Copy, array5Copy];  // array of the copy arrays
+    const arrays = [array1Copy, array2Copy, array3Copy, array4Copy, array5Copy, array6Copy];  // array of the copy arrays
 
     for (let i = 0; i < 4; i++) {  // loop 4 times to create 4 workouts
       const output: any[] = [];  // create a new output array for each iteration
