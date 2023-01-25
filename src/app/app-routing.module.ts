@@ -14,12 +14,11 @@ const routes: Routes = [
   },
   {
     path: 'max-your-lifts',
-
     component: MainHomeComponent,
     children: [
       {
         path: '',
-        redirectTo: 'max-your-lifts/plans',
+        redirectTo: 'plans',
         pathMatch: 'full',
 
       },

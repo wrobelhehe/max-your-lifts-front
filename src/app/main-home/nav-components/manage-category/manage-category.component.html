@@ -24,7 +24,8 @@
             <ng-container matColumnDef="edit">
                 <th class="action-th" mat-header-cell *matHeaderCellDef>Action</th>
                 <td class="action-td td" mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="primary" matTooltip="Edit" (click)="handleEditAction(element)">
+                    <button mat-icon-button color="primary" matTooltip="Edit" (click)="handleEditAction(element)"
+                        [disabled]="element.name==='Benchpress' || element.name ==='Squat' || element.name==='Deadlift' || element.name==='Row'">
                         <mat-icon>edit</mat-icon>
                     </button>
                 </td>
