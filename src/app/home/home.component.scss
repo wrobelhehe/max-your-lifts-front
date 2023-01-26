@@ -122,8 +122,9 @@ app-home {
                 height: 100%;
               }
             }
+
             .text {
-              max-height: 100px;
+              max-height: 150px;
             }
           }
         }
@@ -136,10 +137,8 @@ app-home {
           width: 500px;
           height: 300px;
           margin: 200px auto;
-          background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0)
-          );
+          background: linear-gradient(135deg,
+              rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0));
           backdrop-filter: blur(10px);
           border-radius: 20px;
           border: 1px solid rgba(255, 255, 255, 0.18);
@@ -239,11 +238,11 @@ app-home {
             appearance: none;
           }
 
-          input:checked ~ .content {
+          input:checked~.content {
             max-height: 100vh;
           }
 
-          input:checked ~ label {
+          input:checked~label {
             cursor: auto;
 
             h2 {
@@ -351,6 +350,7 @@ app-home {
                 height: 100%;
               }
             }
+
             .text {
               min-height: 200px;
             }
@@ -365,10 +365,8 @@ app-home {
           width: 500px;
           height: 300px;
           margin: 200px auto;
-          background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0)
-          );
+          background: linear-gradient(135deg,
+              rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0));
           backdrop-filter: blur(10px);
           border-radius: 20px;
           border: 1px solid rgba(255, 255, 255, 0.18);
