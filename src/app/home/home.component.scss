@@ -261,26 +261,6 @@ app-home {
 
     }
 
-    .contact-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      background-color: black;
-
-      .contact-con {
-        width: 80%;
-        min-height: 100vh;
-
-        -webkit-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
-        -moz-box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
-        box-shadow: -1px 8px 24px -14px rgba(66, 68, 90, 1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
   }
 }
 
