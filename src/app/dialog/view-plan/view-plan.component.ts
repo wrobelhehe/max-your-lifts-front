@@ -1,29 +1,16 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { PlansService } from 'src/app/services/plans.service';
 import jsPDF from 'jspdf';
-import * as XLSX from "xlsx";
 import autoTable from 'jspdf-autotable';
-import { Workbook } from 'exceljs';
-import * as FileSaver from 'file-saver';
-
-
-
-
-
-
-
-
+import { VideoPlayerComponent } from '../video-player/video-player.component';
 
 @Component({
   selector: 'app-view-plan',
   templateUrl: './view-plan.component.html',
   styleUrls: ['./view-plan.component.scss']
 })
-
-
 
 
 export class ViewPlanComponent implements OnInit {
@@ -66,16 +53,21 @@ export class ViewPlanComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any,
 
-    private dialogRef: MatDialogRef<ViewPlanComponent>, private planService: PlansService) {
+    private dialogRef: MatDialogRef<ViewPlanComponent>, private planService: PlansService, private dialog: MatDialog,
+  ) {
 
   }
   openLink(link: string): void {
-    window.open(link, '_blank');
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      link: link
+    }
+
+    this.dialog.open(VideoPlayerComponent, dialogConfig)
   }
 
   ngOnInit(): void {
     this.data = this.dialogData.data
-    console.log(this.data)
     this.viewPlan(this.data.plan_id)
 
   }
